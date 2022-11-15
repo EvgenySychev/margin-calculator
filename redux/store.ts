@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import financialParametersSlice from "./slices/financialParametersSlice";
 import autoParametersSlice from './slices/autoParametersSlice'
 import {
+    TypedUseSelectorHook,
     useDispatch as useDispatchBase,
     useSelector as useSelectorBase,
 } from 'react-redux';
@@ -27,3 +28,6 @@ export const useSelector = <TSelected = unknown>(
 ): TSelected => useSelectorBase<AppRootStateType, TSelected>(selector);
 
 export const wrapper = createWrapper<RootStore>(makeStore)
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector;

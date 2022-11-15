@@ -1,27 +1,31 @@
 import {TransactionParameter} from "./TransactionParameter";
+import { useAppSelector } from "../../redux/store";
 
 export const TransactionParametersSelectionPanel = () => {
+
+    const financialParameters = useAppSelector(state => state.financialParameters)
+
     return <div>
         <TransactionParameter
             name={"Кредит"}
-            check={true}
-            value={"130000"}/>
+            check={financialParameters.credit}
+            value={financialParameters.creditValue}/>
         <TransactionParameter
             name={"Шины"}
-            check={true}
-            value={"50000"}/>
+            check={financialParameters.tires}
+            value={financialParameters.tiresValue}/>
         <TransactionParameter
             name={"Допы"}
-            check={true}
-            value={"75000"}/>
+            check={financialParameters.additionalEquipment}
+            value={financialParameters.additionalEquipmentValue}/>
         <TransactionParameter
             name={"Трейд-ин"}
-            check={true}
-            value={"800000"}/>
+            check={financialParameters.tradeIn}
+            value={financialParameters.tradeInValue}/>
         <TransactionParameter
             name={"Доп.скидка"}
-            check={false}
-            value={"100000"}/>
+            check={financialParameters.discount}
+            value={financialParameters.discountValue}/>
     </div>
 
 }

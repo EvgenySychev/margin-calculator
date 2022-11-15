@@ -2,28 +2,28 @@ import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 export type financialParametersState = {
     credit: boolean;
-    creditValue: string | null;
+    creditValue: string;
     tires: boolean;
-    tiresValue: string | null;
+    tiresValue: string;
     additionalEquipment: boolean;
-    additionalEquipmentValue: string | null;
+    additionalEquipmentValue: string;
     tradeIn: boolean;
-    tradeInValue: string | null;
+    tradeInValue: string;
     discount: boolean;
-    discountValue: string | null;
+    discountValue: string;
 }
 
 const initialState: financialParametersState = {
     credit: false,
-    creditValue: null,
+    creditValue: '0',
     tires: false,
-    tiresValue: null,
+    tiresValue: '0',
     additionalEquipment: false,
-    additionalEquipmentValue: null,
+    additionalEquipmentValue: '0',
     tradeIn: false,
-    tradeInValue: null,
+    tradeInValue: '0',
     discount: false,
-    discountValue: null,
+    discountValue: '0',
 } as const;
 
 export const financialParametersSlice = createSlice({

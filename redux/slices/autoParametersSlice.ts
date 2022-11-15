@@ -1,15 +1,15 @@
 import {createSlice, Draft, PayloadAction} from '@reduxjs/toolkit';
 
 export type autoParametersState = {
-    model: string | null;
-    configuration: string | null;
+    model: string;
+    configuration: string;
     reportStatus: "yellow" | "grey" | "white";
     buyer: "individual" | "legalEntity"
 }
 
 const initialState: autoParametersState = {
-    model: null,
-    configuration: null,
+    model: '',
+    configuration: '',
     reportStatus: "white",
     buyer: "individual",
 } as const;

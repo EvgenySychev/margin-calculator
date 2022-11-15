@@ -1,4 +1,9 @@
+import { useAppSelector } from "../../redux/store";
+
 export const CarSelectionPanel = () => {
+
+  const autoParameters = useAppSelector(state => state.autoParameters)
+
   return <div>
     <select name="carModel" id="carModel-select">
       <option value=""> -- Выберите модель автомобиля -- </option>
