@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import HomePage from './homePage'
+import { GetServerSideProps } from "next";
+import { wrapper } from "../redux/store";
 
 const Home = () => {
 
@@ -13,3 +15,7 @@ const Home = () => {
 }
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async ctx => {
+  return {props:{}}
+})
