@@ -1,0 +1,37 @@
+
+.socials {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.socials div {
+    width: 54px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.socials a {
+    font-size: 11px;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    height: 54px;
+    line-height: 54px;
+    border-radius: 54px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    border: 1px solid #585d65;
+    text-decoration: none;
+}
+
+
+.socials a:hover {
+    border: 1px solid darkslateblue;
+}
+
+.socials a:hover span {
+    color: darkslateblue;
+}
