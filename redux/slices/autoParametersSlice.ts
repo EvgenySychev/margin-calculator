@@ -1,21 +1,21 @@
-import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, Draft, PayloadAction} from '@reduxjs/toolkit';
 
-export type ParametersState = {
-    model: string|null;
-    configuration: string|null;
-    reportStatus: "yellow"|"grey"|"white";
+export type autoParametersState = {
+    model: string | null;
+    configuration: string | null;
+    reportStatus: "yellow" | "grey" | "white";
     buyer: "individual" | "legalEntity"
 }
 
-const initialState: ParametersState = {
+const initialState: autoParametersState = {
     model: null,
     configuration: null,
     reportStatus: "white",
     buyer: "individual",
 } as const;
 
-export const parametersSlice = createSlice({
-    name: 'parameters',
+export const autoParametersSlice = createSlice({
+    name: 'autoParameters',
     initialState,
     reducers: {
         setModel: (
@@ -45,8 +45,13 @@ export const parametersSlice = createSlice({
     },
 });
 
-export const getParametersState = (state: { parameters: ParametersState }) => state.parameters;
+export const getParametersState = (state: { autoParameters: autoParametersState }) => state.autoParameters;
 
-export const { setModel, setConfiguration, setReportStatus, setBuyer } = parametersSlice.actions;
+export const {
+    setModel,
+    setConfiguration,
+    setReportStatus,
+    setBuyer
+} = autoParametersSlice.actions;
 
-export default parametersSlice.reducer;
+export default autoParametersSlice.reducer;

@@ -1,15 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import parametersSlice from './slices/parametersSlice'
+import {configureStore} from '@reduxjs/toolkit';
+import financialParametersSlice from "./slices/financialParametersSlice";
+import autoParametersSlice from './slices/autoParametersSlice'
 import {
     useDispatch as useDispatchBase,
     useSelector as useSelectorBase,
 } from 'react-redux';
 import {createWrapper} from 'next-redux-wrapper'
 
-export function makeStore () {
+export function makeStore() {
     return configureStore({
         reducer: {
-            parameters: parametersSlice,
+            autoParameters: autoParametersSlice,
+            financialParameters: financialParametersSlice,
         },
     });
 }
