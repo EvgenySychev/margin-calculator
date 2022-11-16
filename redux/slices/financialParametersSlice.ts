@@ -1,4 +1,4 @@
-import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, Draft, PayloadAction} from '@reduxjs/toolkit';
 
 export type financialParametersState = {
     credit: boolean;
@@ -15,26 +15,80 @@ export type financialParametersState = {
 
 const initialState: financialParametersState = {
     credit: false,
-    creditValue: '0',
+    creditValue: '',
     tires: false,
-    tiresValue: '0',
+    tiresValue: '',
     additionalEquipment: false,
-    additionalEquipmentValue: '0',
+    additionalEquipmentValue: '',
     tradeIn: false,
-    tradeInValue: '0',
+    tradeInValue: '',
     discount: false,
-    discountValue: '0',
+    discountValue: '',
 } as const;
 
 export const financialParametersSlice = createSlice({
     name: 'financialParameters',
     initialState,
     reducers: {
-        setFinancialParameters: (
+        setCredit: (
             state: Draft<typeof initialState>,
-            action: PayloadAction<typeof initialState>
+            action: PayloadAction<typeof initialState.credit>
         ) => {
-            state = action.payload;
+            state.credit = action.payload;
+        },
+        setTires: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.tires>
+        ) => {
+            state.tires = action.payload;
+        },
+        setAdditionalEquipment: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.additionalEquipment>
+        ) => {
+            state.additionalEquipment = action.payload;
+        },
+        setTradeIn: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.tradeIn>
+        ) => {
+            state.tradeIn = action.payload;
+        },
+        setDiscount: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.discount>
+        ) => {
+            state.discount = action.payload;
+        },
+        setCreditValue: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.creditValue>
+        ) => {
+            state.creditValue = action.payload;
+        },
+        setTiresValue: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.tiresValue>
+        ) => {
+            state.tiresValue = action.payload;
+        },
+        setAdditionalEquipmentValue: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.additionalEquipmentValue>
+        ) => {
+            state.additionalEquipmentValue = action.payload;
+        },
+        setTradeInValue: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.tradeInValue>
+        ) => {
+            state.tradeInValue = action.payload;
+        },
+        setDiscountValue: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.discountValue>
+        ) => {
+            state.discountValue = action.payload;
         },
     },
 });
@@ -42,7 +96,16 @@ export const financialParametersSlice = createSlice({
 export const getParametersState = (state: { financialParameters: financialParametersState }) => state.financialParameters;
 
 export const {
-    setFinancialParameters,
+    setCredit,
+    setTires,
+    setAdditionalEquipment,
+    setTradeIn,
+    setDiscount,
+    setCreditValue,
+    setTiresValue,
+    setAdditionalEquipmentValue,
+    setTradeInValue,
+    setDiscountValue
 } = financialParametersSlice.actions;
 
 export default financialParametersSlice.reducer;
