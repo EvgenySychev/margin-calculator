@@ -27,7 +27,7 @@ export const CarSelectionPanel = () => {
         <select name="carModel" id="carModel-select"
                 onChange={onChangeModel}>
             <option value=""> -- Выберите модель --</option>
-            {models.map(m =>
+            {models.slice(1).map(m =>
                 <option key={m.id} value={m.modelName}> -- {`${m.modelName}`} --</option>
             )
             }

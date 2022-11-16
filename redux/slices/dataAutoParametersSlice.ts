@@ -5,12 +5,12 @@ export type ConfigurationType = {
     nameConfiguration: string
     retailValue: string
     entranceCost: string
-    discountTradeIn:string
-    refundTradeIn:string
-    discountTires:string
-    discountEquipment:string
-    discountDealer:string
-    refundDealer:string
+    discountTradeIn: string
+    refundTradeIn: string
+    discountTires: string
+    discountEquipment: string
+    discountDealer: string
+    refundDealer: string
 }
 
 export type ModelType = {
@@ -23,6 +23,11 @@ export type DataModelType = ModelType[]
 
 const initialState: DataModelType = [
     {
+        id: 0,
+        modelName: '',
+        configuration: []
+    },
+    {
         id: 1,
         modelName: '4PRO',
         configuration: [
@@ -31,24 +36,24 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Travel',
                 retailValue: '2339900',
                 entranceCost: '2049900',
-                discountTradeIn:'220000',
-                refundTradeIn:'50000',
-                discountTires:'40000',
-                discountEquipment:'50000',
-                discountDealer:'100000',
-                refundDealer:'100000',
+                discountTradeIn: '220000',
+                refundTradeIn: '50000',
+                discountTires: '40000',
+                discountEquipment: '50000',
+                discountDealer: '100000',
+                refundDealer: '100000',
             },
             {
                 id: 2,
                 nameConfiguration: 'Stile',
                 retailValue: '2399900',
                 entranceCost: '2109900',
-                discountTradeIn:'220000',
-                refundTradeIn:'50000',
-                discountTires:'40000',
-                discountEquipment:'50000',
-                discountDealer:'100000',
-                refundDealer:'100000',
+                discountTradeIn: '220000',
+                refundTradeIn: '50000',
+                discountTires: '40000',
+                discountEquipment: '50000',
+                discountDealer: '100000',
+                refundDealer: '100000',
             },
         ]
     },
@@ -61,24 +66,24 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Elite',
                 retailValue: '2649900',
                 entranceCost: '2249900',
-                discountTradeIn:'320000',
-                refundTradeIn:'60000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '320000',
+                refundTradeIn: '60000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
             {
                 id: 2,
                 nameConfiguration: 'Prestige',
                 retailValue: '2779900',
                 entranceCost: '2379900',
-                discountTradeIn:'320000',
-                refundTradeIn:'60000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '320000',
+                refundTradeIn: '60000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
         ]
     },
@@ -91,24 +96,24 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Dreamline',
                 retailValue: '3469900',
                 entranceCost: '2915900',
-                discountTradeIn:'510000',
-                refundTradeIn:'110000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '510000',
+                refundTradeIn: '110000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
             {
                 id: 2,
                 nameConfiguration: 'Ultimate',
                 retailValue: '3589900',
                 entranceCost: '3035900',
-                discountTradeIn:'510000',
-                refundTradeIn:'110000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '510000',
+                refundTradeIn: '110000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
         ]
     },
@@ -121,24 +126,24 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Dreamline',
                 retailValue: '3890900',
                 entranceCost: '3360900',
-                discountTradeIn:'370000',
-                refundTradeIn:'40000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '370000',
+                refundTradeIn: '40000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
             {
                 id: 2,
                 nameConfiguration: 'Ultimate',
                 retailValue: '4190900',
                 entranceCost: '3640900',
-                discountTradeIn:'430000',
-                refundTradeIn:'80000',
-                discountTires:'50000',
-                discountEquipment:'50000',
-                discountDealer:'200000',
-                refundDealer:'200000',
+                discountTradeIn: '430000',
+                refundTradeIn: '80000',
+                discountTires: '50000',
+                discountEquipment: '50000',
+                discountDealer: '200000',
+                refundDealer: '200000',
             },
         ]
     }

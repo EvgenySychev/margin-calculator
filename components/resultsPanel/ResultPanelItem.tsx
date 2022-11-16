@@ -1,5 +1,10 @@
-export const ResultPanelItem = () => {
+
+export type ResultPanelItemType = {
+    value: string
+}
+
+export const ResultPanelItem = ({value}:ResultPanelItemType) => {
   return <div>
-      Цифры
+      {value}
   </div>
 }
