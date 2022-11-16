@@ -1,7 +1,7 @@
 import {createSlice, Draft, PayloadAction} from '@reduxjs/toolkit';
 
 export type autoParametersState = {
-    model: string;
+    model: string
     configuration: string;
     reportStatus: "yellow" | "grey" | "white";
     buyer: "individual" | "legalEntity"

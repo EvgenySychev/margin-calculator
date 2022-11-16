@@ -1,28 +1,51 @@
-import { useAppSelector } from "../../redux/store";
+import {useAppDispatch, useAppSelector} from "../../redux/store";
+import {ChangeEvent, useState} from "react";
+import { setModel,setConfiguration } from "../../redux/slices/autoParametersSlice";
 
 export const CarSelectionPanel = () => {
 
-  const autoParameters = useAppSelector(state => state.autoParameters)
+    const models = useAppSelector(state => state.dataAutoParameters)
+    const dispatch = useAppDispatch()
 
-  return <div>
-    <select name="carModel" id="carModel-select">
-      <option value=""> -- Выберите модель автомобиля -- </option>
-      <option value="4PRO"> -- 4 PRO -- </option>
-      <option value="7PRO"> -- 7 PRO -- </option>
-      <option value="8PRO"> -- 8 PRO -- </option>
-      <option value="8PRO-MAX"> -- 8 PRO MAX -- </option>
-    </select>
-    <select name="modelConfiguration" id="modelConfiguration-select">
-      <option value=""> -- Выберите комплектацию -- </option>
-      <option value="Style"> -- Style -- </option>
-      <option value="Prestige"> -- Prestige -- </option>
-    </select>
-    <ul>
-      <li>Желтая</li>
-      <li>Серая</li>
-      <li>Белая</li>
-      <li>Физ.лицо</li>
-      <li>Лизинг</li>
-    </ul>
-  </div>
+    const [configurations, setConfigurations] = useState([])
+
+    const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
+        dispatch(setModel(e.currentTarget.value))
+        const modelName = e.target.options[e.target.selectedIndex].value;
+        const model = models.find(item => item.modelName === modelName);
+        if (model) {
+            // @ts-ignore
+            setConfigurations(model.configuration);
+        }
+    }
+
+    const onChangeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
+        dispatch(setConfiguration(e.currentTarget.value))
+    }
+    // @ts-ignore
+    return <div>
+        <select name="carModel" id="carModel-select"
+                onChange={onChangeModel}>
+            <option value=""> -- Выберите модель --</option>
+            {models.map(m =>
+                <option key={m.id} value={m.modelName}> -- {`${m.modelName}`} --</option>
+            )
+            }
+        </select>
+
+        <select name="modelConfiguration" id="modelConfiguration-select" onChange={onChangeConfiguration}>
+            <option value=""> -- Выберите комплектацию --</option>
+            {// @ts-ignore
+                configurations.map(c => <option key={c.id} value={c.nameConfiguration}> -- {`${c.nameConfiguration}`} --</option> )
+            }
+        </select>
+
+        <ul>
+            <li>Желтая</li>
+            <li>Серая</li>
+            <li>Белая</li>
+            <li>Физ.лицо</li>
+            <li>Лизинг</li>
+        </ul>
+    </div>
 }

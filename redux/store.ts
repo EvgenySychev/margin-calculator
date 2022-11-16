@@ -1,6 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import financialParametersSlice from "./slices/financialParametersSlice";
 import autoParametersSlice from './slices/autoParametersSlice'
+import dataAutoParametersSlice from "./slices/dataAutoParametersSlice";
 import {
     TypedUseSelectorHook,
     useDispatch as useDispatchBase,
@@ -12,6 +13,7 @@ export function makeStore() {
     return configureStore({
         reducer: {
             autoParameters: autoParametersSlice,
+            dataAutoParameters: dataAutoParametersSlice,
             financialParameters: financialParametersSlice,
         },
     });
