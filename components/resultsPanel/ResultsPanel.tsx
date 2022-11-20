@@ -19,12 +19,12 @@ export const ResultsPanel = () => {
         {configuration
             ?
             (<div>
-                    <ResultPanelItem value={configuration.retailValue}/>
-                    <ResultPanelItem value={configuration.retailValue}/>
-                    <ResultPanelItem value={configuration.retailValue}/>
-                    <ResultPanelItem value={configuration.retailValue}/>
-                    <ResultPanelItem value={configuration.retailValue}/>
-                    <ResultPanelItem value={configuration.retailValue}/>
+                    <ResultPanelItem title={"РРЦ"} value={configuration.retailValue}/>
+                    <ResultPanelItem title={"Маржа кузов"} value={configuration.retailValue}/>
+                    <ResultPanelItem title={"Стоимость доп.оборудования"} value={configuration.retailValue}/>
+                    <ResultPanelItem title={"Общая выгода клиента"} value={configuration.retailValue}/>
+                    <ResultPanelItem title={"КМ"} value={configuration.retailValue}/>
+                    <ResultPanelItem title={"Итоговая стоимость авто"} value={configuration.retailValue}/>
                 </div>
             )
             : ''}
