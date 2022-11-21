@@ -77,7 +77,7 @@ const initialState: DataModelType = [
                 id: 2,
                 nameConfiguration: 'Prestige',
                 retailValue: '2779900',
-                entranceCost: '2379900',
+                entranceCost: '2399900',
                 discountTradeIn: '320000',
                 refundTradeIn: '60000',
                 discountTires: '50000',

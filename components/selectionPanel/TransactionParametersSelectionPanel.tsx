@@ -1,5 +1,6 @@
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {setParameters} from "../../redux/slices/financialParametersSlice";
+import {setCalculate} from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
 
 type FormikErrorType = {
@@ -14,8 +15,6 @@ type FormikErrorType = {
 
 export const TransactionParametersSelectionPanel = () => {
 
-    const financialParameters = useAppSelector(state => state.financialParameters)
-
     const dispatch = useAppDispatch()
 
     const formik = useFormik({
@@ -28,6 +27,7 @@ export const TransactionParametersSelectionPanel = () => {
         },
         onSubmit: values => {
             dispatch(setParameters(values))
+            dispatch(setCalculate(true))
             console.log(values)
         },
     })

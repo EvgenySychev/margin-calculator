@@ -9,11 +9,11 @@ export type financialParametersState = {
 }
 
 const initialState: financialParametersState = {
-    credit: '',
-    tires: '',
-    additionalEquipment: '',
-    tradeIn: '',
-    discount: '',
+    credit: '0',
+    tires: '0',
+    additionalEquipment: '0',
+    tradeIn: '0',
+    discount: '0',
 } as const;
 
 export const financialParametersSlice = createSlice({
@@ -24,7 +24,11 @@ export const financialParametersSlice = createSlice({
             state: Draft<typeof initialState>,
             action: PayloadAction<typeof initialState>
         ) => {
-            state = action.payload;
+            state.credit = action.payload.credit;
+            state.tires = action.payload.tires;
+            state.additionalEquipment = action.payload.additionalEquipment;
+            state.tradeIn = action.payload.tradeIn;
+            state.discount = action.payload.discount;
         },
     },
 });
