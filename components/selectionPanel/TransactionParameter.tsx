@@ -1,17 +1,17 @@
 import {ChangeEvent} from "react";
 
 type TransactionParameterPropsType = {
-    name: string
+    nameParametr: string
     check: boolean
-    value: string
+    valueParameter: string
     onChecked: (check: boolean) => void
     onChangedValue: (value: string) => void
 }
 
 export const TransactionParameter = ({
-                                         name,
+                                         nameParametr,
                                          check,
-                                         value,
+                                         valueParameter,
                                          onChecked,
                                          onChangedValue
                                      }: TransactionParameterPropsType) => {
@@ -25,8 +25,8 @@ export const TransactionParameter = ({
     }
 
     return <div>
-        <span>{name}</span>
+        <span>{nameParametr}</span>
         <input onChange={onCheckSwitcher} type="checkbox" checked={check}/>
-        <input type="text" value={value} onChange={onChangeValue}/>
+        <input type="text" value={valueParameter} onChange={onChangeValue}/>
     </div>
 }

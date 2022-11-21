@@ -30,6 +30,12 @@ export const financialParametersSlice = createSlice({
     name: 'financialParameters',
     initialState,
     reducers: {
+        setParameters: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState>
+        ) => {
+            state = action.payload;
+        },
         setCredit: (
             state: Draft<typeof initialState>,
             action: PayloadAction<typeof initialState.credit>
@@ -96,6 +102,7 @@ export const financialParametersSlice = createSlice({
 export const getParametersState = (state: { financialParameters: financialParametersState }) => state.financialParameters;
 
 export const {
+    setParameters,
     setCredit,
     setTires,
     setAdditionalEquipment,
