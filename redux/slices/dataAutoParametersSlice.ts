@@ -25,7 +25,19 @@ const initialState: DataModelType = [
     {
         id: 0,
         modelName: '',
-        configuration: []
+        configuration: [
+            {
+                id: 0,
+                nameConfiguration: '',
+                retailValue: '0',
+                entranceCost: '0',
+                discountTradeIn: '0',
+                refundTradeIn: '0',
+                discountTires: '0',
+                discountEquipment: '0',
+                discountDealer: '0',
+                refundDealer: '0',
+            }]
     },
     {
         id: 1,

@@ -16,14 +16,15 @@ type FormikErrorType = {
 export const TransactionParametersSelectionPanel = () => {
 
     const dispatch = useAppDispatch()
+    const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
 
     const formik = useFormik({
         initialValues: {
-            credit: '',
-            tires: '',
-            additionalEquipment: '',
-            tradeIn: '',
-            discount: '',
+            credit: '0',
+            tires: '0',
+            additionalEquipment: '0',
+            tradeIn: '0',
+            discount: '0',
         },
         onSubmit: values => {
             dispatch(setParameters(values))
@@ -60,7 +61,7 @@ export const TransactionParametersSelectionPanel = () => {
                 <input type="text"
                        {...formik.getFieldProps("discount")}/>
             </div>
-            <button type={'submit'}>Рассчитать</button>
+            <button disabled={!modelWasSelected} type={'submit'}>Рассчитать</button>
         </form>
 
     </div>

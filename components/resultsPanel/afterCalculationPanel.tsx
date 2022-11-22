@@ -1,10 +1,6 @@
 import {useAppSelector} from "../../redux/store";
 import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
 
-type AfterCalculationPanelType = {
-    value: string
-}
-
 export const AfterCalculationPanel = () => {
 
     const currentModel = useAppSelector(state => state.autoParameters.model)
@@ -24,18 +20,19 @@ export const AfterCalculationPanel = () => {
 
     const netPrice = (parseInt(configuration.retailValue) - parseInt(finance.discount) - parseInt(configuration.discountTradeIn)).toString()
 
-    const km = (parseInt(marginKuzov) + parseInt(configuration.refundTradeIn) + parseInt(finance.additionalEquipment)*0.65 + parseInt(finance.tradeIn)*0.1 + parseInt(finance.credit) - parseInt(finance.tires) ).toString()
+    const km = (parseInt(marginKuzov) + parseInt(configuration.refundTradeIn) + parseInt(finance.additionalEquipment) * 0.65 + parseInt(finance.tradeIn) * 0.1 + parseInt(finance.credit) - parseInt(finance.tires)).toString()
 
     const autoCoast = (parseInt(netPrice) + parseInt(finance.additionalEquipment)).toString()
+    const totalBenefit = (parseInt(configuration.discountTradeIn) + parseInt(finance.discount)).toString()
 
 
     return <div>
-        <div style={{height:"30px", marginTop: "15px"}}>{configuration.retailValue}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{bezDopSkidok}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{marginKuzov}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{netPrice}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{configuration.retailValue}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{km}</div>
-        <div style={{height:"30px", marginTop: "15px"}}>{autoCoast}</div>
+        <div style={{height: "30px", marginTop: "15px"}}>{configuration.retailValue}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{bezDopSkidok}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{marginKuzov}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{netPrice}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{totalBenefit}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{km}</div>
+        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{autoCoast}</div>
     </div>
 }

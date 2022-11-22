@@ -15,7 +15,7 @@ export const ResultsPanel = () => {
         <div>
             панель результатов после расчета
         </div>
-        <div style={{display: "flex", height: "30px", marginTop: "15px"}}>
+        <div style={{display: "flex", height: "30px", marginTop: "15px", width: "400px"}}>
             <div>
                 {title.map(t => <ResultPanelItem key={t} title={t}/>)}
             </div>
