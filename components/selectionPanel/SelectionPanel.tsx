@@ -5,7 +5,8 @@ import {
 
 export const SelectionPanel = () => {
     return <div style={{
-        margin: "15px"
+        margin: "15px",
+        border: "solid 2px grey"
     }}>
         <CarSelectionPanel/>
         <TransactionParametersSelectionPanel/>

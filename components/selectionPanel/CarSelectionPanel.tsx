@@ -37,9 +37,8 @@ export const CarSelectionPanel = () => {
     }
 
     // @ts-ignore
-    return <div>
-
-        <select id="carModel-select"
+    return <div style={{margin: "10px", height:"30px" }}>
+        <select style={{textAlign:"center", width: "220px", height:"30px", fontSize: "14px", fontWeight:"600"}}  id="carModel-select"
                 onChange={onChangeModel}>
             <option value=""> -- Выберите модель --</option>
             {models.slice(1).map(m =>
@@ -48,8 +47,7 @@ export const CarSelectionPanel = () => {
             )
             }
         </select>
-
-        <select id="modelConfiguration-select"
+        <select style={{marginLeft: "10px", textAlign:"center",width: "220px", height:"30px",fontSize: "14px",fontWeight:"600"}} id="modelConfiguration-select"
                 onChange={onChangeConfiguration}>
             <option value=""> -- Выберите комплектацию --</option>
             {// @ts-ignore
@@ -57,12 +55,5 @@ export const CarSelectionPanel = () => {
                                                 value={c.nameConfiguration}> -- {`${c.nameConfiguration}`} --</option>)
             }
         </select>
-        <ul>
-            <li>Желтая</li>
-            <li>Серая</li>
-            <li>Белая</li>
-            <li>Физ.лицо</li>
-            <li>Лизинг</li>
-        </ul>
     </div>
 }

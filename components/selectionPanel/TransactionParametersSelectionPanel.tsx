@@ -33,30 +33,45 @@ export const TransactionParametersSelectionPanel = () => {
         },
     })
 
-    return <div>
+    return <div style={{margin: "10px", marginTop: "30px"}}>
         <form onSubmit={formik.handleSubmit}>
 
-            <div>
+            <div style={{
+                height: "30px",
+                marginTop: "15px"
+            }}>
                 <span>Кредит</span>
                 <input type="text"
                        {...formik.getFieldProps("credit")}/>
             </div>
-            <div>
+            <div style={{
+                height: "30px",
+                marginTop: "15px"
+            }}>
                 <span>Шины</span>
                 <input type="text"
                        {...formik.getFieldProps("tires")}/>
             </div>
-            <div>
+            <div style={{
+                height: "30px",
+                marginTop: "15px"
+            }}>
                 <span>Допы</span>
                 <input type="text"
                        {...formik.getFieldProps("additionalEquipment")}/>
             </div>
-            <div>
+            <div style={{
+                height: "30px",
+                marginTop: "15px"
+            }}>
                 <span>Трейд-ин</span>
                 <input type="text"
                        {...formik.getFieldProps("tradeIn")}/>
             </div>
-            <div>
+            <div style={{
+                height: "30px",
+                marginTop: "15px"
+            }}>
                 <span>Доп.скидка</span>
                 <input type="text"
                        {...formik.getFieldProps("discount")}/>

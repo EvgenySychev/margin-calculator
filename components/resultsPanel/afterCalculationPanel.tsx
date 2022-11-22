@@ -6,7 +6,6 @@ export const AfterCalculationPanel = () => {
     const currentModel = useAppSelector(state => state.autoParameters.model)
     const currentConfiguration = useAppSelector(state => state.autoParameters.configuration)
     const finance = useAppSelector(state => state.financialParameters)
-
     const data = useAppSelector(state => state.dataAutoParameters)
 
     // @ts-ignore
@@ -27,12 +26,36 @@ export const AfterCalculationPanel = () => {
 
 
     return <div>
-        <div style={{height: "30px", marginTop: "15px"}}>{configuration.retailValue}</div>
-        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{bezDopSkidok}</div>
-        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{marginKuzov}</div>
-        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{netPrice}</div>
-        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{totalBenefit}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{configuration.retailValue}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{bezDopSkidok}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{marginKuzov}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{netPrice}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{totalBenefit}</div>
         <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{km}</div>
-        <div style={{height: "30px", marginTop: "15px", textAlign: "right"}}>{autoCoast}</div>
+        <div style={{
+            height: "30px",
+            marginTop: "15px",
+            textAlign: "right"
+        }}>{autoCoast}</div>
     </div>
 }

@@ -8,7 +8,8 @@ const HomePage = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-evenly",
-            fontSize: "22px"
+            fontSize: "22px",
+            height: "450px"
         }}>
           <SelectionPanel/>
           <ResultsPanel/>

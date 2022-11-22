@@ -10,12 +10,13 @@ export const ResultsPanel = () => {
 
 
     return <div style={{
-        margin: "15px"
+        margin: "15px",
+        border: "solid 2px grey"
     }}>
-        <div>
-            панель результатов после расчета
+        <div style={{margin: "10px", textAlign:"center", height: "30px"}}>
+            РАСЧЕТ
         </div>
-        <div style={{display: "flex", height: "30px", marginTop: "15px", width: "400px"}}>
+        <div style={{display: "flex", height: "30px", margin: "15px", width: "400px"}}>
             <div>
                 {title.map(t => <ResultPanelItem key={t} title={t}/>)}
             </div>
@@ -25,6 +26,3 @@ export const ResultsPanel = () => {
         </div>
     </div>
 }
-
-
-//: title.map(t => <ResultPanelItem key={t} title={t} value={configuration.retailValue}/>)}
