@@ -1,6 +1,7 @@
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {ChangeEvent, useState} from "react";
 import {setModel, setConfiguration} from "../../redux/slices/autoParametersSlice";
+import {setCalculate} from "../../redux/slices/calculationToggleSlice";
 
 export const CarSelectionPanel = () => {
 
@@ -11,6 +12,7 @@ export const CarSelectionPanel = () => {
 
     const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setModel(e.currentTarget.value))
+        dispatch(setCalculate(false))
         const modelName = e.target.options[e.target.selectedIndex].value;
         const model = models.find(item => item.modelName === modelName);
         if (model) {
