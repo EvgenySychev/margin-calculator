@@ -1,7 +1,10 @@
 import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {setParameters} from "../../redux/slices/financialParametersSlice";
+import {
+    setParameters,
+} from "../../redux/slices/financialParametersSlice";
 import {setCalculate} from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
+import {ChangeEvent, useState} from "react";
 
 type FormikErrorType = {
     model?: string
@@ -15,8 +18,14 @@ type FormikErrorType = {
 
 export const TransactionParametersSelectionPanel = () => {
 
+    const [tiresGiftToggle, setTiresGiftToggle] = useState(false)
+
     const dispatch = useAppDispatch()
     const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
+
+    const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
+        setTiresGiftToggle(e.currentTarget.checked)
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -25,6 +34,10 @@ export const TransactionParametersSelectionPanel = () => {
             additionalEquipment: '0',
             tradeIn: '0',
             discount: '0',
+        },
+        validate: (values) => {
+            const errors: FormikErrorType = {};
+
         },
         onSubmit: values => {
             dispatch(setParameters(values))
@@ -38,45 +51,65 @@ export const TransactionParametersSelectionPanel = () => {
 
             <div style={{
                 height: "30px",
-                marginTop: "15px"
+                marginTop: "15px",
+                display: "flex",
+                justifyContent: "space-between"
             }}>
                 <span>Кредит</span>
-                <input type="text"
+                <input type="text" style={{textAlign: "right"}}
                        {...formik.getFieldProps("credit")}/>
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px"
+                marginTop: "15px",
+                display: "flex",
+                justifyContent: "space-between"
             }}>
                 <span>Шины</span>
-                <input type="text"
-                       {...formik.getFieldProps("tires")}/>
+                <span>
+                    <input onChange={onTiresGiftSwitch} checked={tiresGiftToggle}
+                           type="checkbox"/>
+                    <span style={{fontSize: "15px"}}>шины в подарок</span>
+                </span>
+                <input type="text" style={{textAlign: "right"}}
+                             {...formik.getFieldProps("tires")}/>
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px"
+                marginTop: "15px",
+                display: "flex",
+                justifyContent: "space-between"
             }}>
                 <span>Допы</span>
-                <input type="text"
+                <input type="text" style={{textAlign: "right"}}
                        {...formik.getFieldProps("additionalEquipment")}/>
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px"
+                marginTop: "15px",
+                display: "flex",
+                justifyContent: "space-between"
             }}>
                 <span>Трейд-ин</span>
-                <input type="text"
+                <input type="text" style={{textAlign: "right"}}
                        {...formik.getFieldProps("tradeIn")}/>
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px"
+                marginTop: "15px",
+                display: "flex",
+                justifyContent: "space-between"
             }}>
                 <span>Доп.скидка</span>
-                <input type="text"
+                <input type="text" style={{textAlign: "right"}}
                        {...formik.getFieldProps("discount")}/>
             </div>
-            <button disabled={!modelWasSelected} type={'submit'}>Рассчитать</button>
+            <button style={{
+                height: "30px",
+                width: "200px",
+                marginTop: "50px",
+            }} disabled={!modelWasSelected} type={'submit'}>Рассчитать
+            </button>
         </form>
 
     </div>
