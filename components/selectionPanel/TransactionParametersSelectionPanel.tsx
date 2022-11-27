@@ -2,7 +2,11 @@ import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {
     setParameters,
 } from "../../redux/slices/financialParametersSlice";
-import {setCalculate, setTiresCheck} from "../../redux/slices/calculationToggleSlice";
+import {
+    setCalculate,
+    setTiresCheck,
+    setTradeInCheck
+} from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 
@@ -19,6 +23,7 @@ type FormikErrorType = {
 export const TransactionParametersSelectionPanel = () => {
 
     const [tiresGiftToggle, setTiresGiftToggle] = useState(false)
+    const [tradeInToggle, setTradeInToggle] = useState(false)
 
     const dispatch = useAppDispatch()
     const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
@@ -26,6 +31,11 @@ export const TransactionParametersSelectionPanel = () => {
     const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
         setTiresGiftToggle(e.currentTarget.checked)
         dispatch(setTiresCheck(e.currentTarget.checked))
+    }
+
+    const onTradeInSwitch = (e: ChangeEvent<HTMLInputElement>) => {
+        setTradeInToggle(e.currentTarget.checked)
+        dispatch(setTradeInCheck(e.currentTarget.checked))
     }
 
     const formik = useFormik({
@@ -92,6 +102,11 @@ export const TransactionParametersSelectionPanel = () => {
                 justifyContent: "space-between"
             }}>
                 <span>Трейд-ин</span>
+                <span>
+                    <input onChange={onTradeInSwitch} checked={tradeInToggle}
+                           type="checkbox"/>
+                    <span style={{fontSize: "15px"}}>с трейд-ин</span>
+                </span>
                 <input type="text" style={{textAlign: "right"}}
                        {...formik.getFieldProps("tradeIn")}/>
             </div>

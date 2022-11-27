@@ -8,6 +8,7 @@ export const AfterCalculationPanel = () => {
     const finance = useAppSelector(state => state.financialParameters)
     const data = useAppSelector(state => state.dataAutoParameters)
     const tiresCheck = useAppSelector(state => state.calculationToggle.tiresCheck)
+    const tradeInCheck = useAppSelector(state => state.calculationToggle.tradeInCheck)
     const tiresMarginRatio = useAppSelector(state => state.coefficients.tiresMarginRatio)
     const tradeInMarginRatio = useAppSelector(state => state.coefficients.tradeInMarginRatio)
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
@@ -17,23 +18,48 @@ export const AfterCalculationPanel = () => {
     const configuration = model.configuration.find(c => c.nameConfiguration === currentConfiguration)
     console.log(finance)
 
-    const tiresRecognizer = (check:boolean, tires: number) => {
+    const toTiresRecognize = (check:boolean, tires: number) => {
         if (check) {
             return tires = -Math.abs(tires);
         } else {
             return tires*tiresMarginRatio
         }
     }
+    const toTradeInRecognize = (check:boolean, tradeInDiscount: number, importerDiscount:number ) => {
+        if (check) {
+            return tradeInDiscount;
+        } else {
+            return importerDiscount
+        }
+    }
+    const toTradeInRefundRecognize = (check:boolean, refundTradeIn: number) => {
+        if (check) {
+            return refundTradeIn;
+        } else {
+            return 0
+        }
+    }
+    const toTradeInMarginRefundRecognize = (check:boolean, TradeInMargin: number) => {
+        if (check) {
+            return TradeInMargin * tradeInMarginRatio;
+        } else {
+            return 0
+        }
+    }
 
     const retailValue = parseInt(configuration.retailValue)
     const entranceCost = parseInt(configuration.entranceCost)
     const discount = parseInt(finance.discount)
-    const discountTradeIn = parseInt(configuration.discountTradeIn)
-    const refundTradeIn = parseInt(configuration.refundTradeIn)
+    const discountTradeIn = toTradeInRecognize(tradeInCheck,parseInt(configuration.discountTradeIn),parseInt(configuration.importerDiscount))
+    const refundTradeIn = toTradeInRefundRecognize(tradeInCheck,parseInt(configuration.refundTradeIn))
     const additionalEquipment = parseInt(finance.additionalEquipment)
-    const tradeIn = parseInt(finance.tradeIn) * tradeInMarginRatio
+    const tradeIn = toTradeInMarginRefundRecognize(tradeInCheck, parseInt(finance.tradeIn))
     const credit = parseInt(finance.credit)
-    const tires = tiresRecognizer(tiresCheck,parseInt(finance.tires))
+    const tires = toTiresRecognize(tiresCheck,parseInt(finance.tires))
+
+    console.log('tradeInCheck ' + tradeInCheck)
+    console.log('discountTradeIn ' + discountTradeIn)
+    console.log('refundTradeIn ' + refundTradeIn)
 
     const marginKuzov = (retailValue - entranceCost - discount - discountTradeIn).toString()
 

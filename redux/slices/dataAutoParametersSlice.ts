@@ -5,6 +5,7 @@ export type ConfigurationType = {
     nameConfiguration: string
     retailValue: string
     entranceCost: string
+    importerDiscount:string
     discountTradeIn: string
     refundTradeIn: string
     discountTires: string
@@ -31,6 +32,7 @@ const initialState: DataModelType = [
                 nameConfiguration: '',
                 retailValue: '0',
                 entranceCost: '0',
+                importerDiscount: '0',
                 discountTradeIn: '0',
                 refundTradeIn: '0',
                 discountTires: '0',
@@ -48,6 +50,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Travel',
                 retailValue: '2339900',
                 entranceCost: '2049900',
+                importerDiscount: '170000',
                 discountTradeIn: '220000',
                 refundTradeIn: '50000',
                 discountTires: '40000',
@@ -60,6 +63,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Stile',
                 retailValue: '2399900',
                 entranceCost: '2109900',
+                importerDiscount: '170000',
                 discountTradeIn: '220000',
                 refundTradeIn: '50000',
                 discountTires: '40000',
@@ -78,6 +82,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Elite',
                 retailValue: '2649900',
                 entranceCost: '2249900',
+                importerDiscount: '240000',
                 discountTradeIn: '320000',
                 refundTradeIn: '60000',
                 discountTires: '50000',
@@ -90,6 +95,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Prestige',
                 retailValue: '2779900',
                 entranceCost: '2399900',
+                importerDiscount: '240000',
                 discountTradeIn: '320000',
                 refundTradeIn: '60000',
                 discountTires: '50000',
@@ -108,6 +114,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Dreamline',
                 retailValue: '3469900',
                 entranceCost: '2915900',
+                importerDiscount: '350000',
                 discountTradeIn: '510000',
                 refundTradeIn: '110000',
                 discountTires: '50000',
@@ -120,6 +127,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Ultimate',
                 retailValue: '3589900',
                 entranceCost: '3035900',
+                importerDiscount: '350000',
                 discountTradeIn: '510000',
                 refundTradeIn: '110000',
                 discountTires: '50000',
@@ -138,6 +146,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Dreamline',
                 retailValue: '3890900',
                 entranceCost: '3360900',
+                importerDiscount: '280000',
                 discountTradeIn: '370000',
                 refundTradeIn: '40000',
                 discountTires: '50000',
@@ -150,6 +159,7 @@ const initialState: DataModelType = [
                 nameConfiguration: 'Ultimate',
                 retailValue: '4190900',
                 entranceCost: '3640900',
+                importerDiscount: '300000',
                 discountTradeIn: '430000',
                 refundTradeIn: '80000',
                 discountTires: '50000',
