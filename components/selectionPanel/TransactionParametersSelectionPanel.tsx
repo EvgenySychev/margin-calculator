@@ -2,7 +2,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {
     setParameters,
 } from "../../redux/slices/financialParametersSlice";
-import {setCalculate} from "../../redux/slices/calculationToggleSlice";
+import {setCalculate, setTiresCheck} from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 
@@ -25,6 +25,7 @@ export const TransactionParametersSelectionPanel = () => {
 
     const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
         setTiresGiftToggle(e.currentTarget.checked)
+        dispatch(setTiresCheck(e.currentTarget.checked))
     }
 
     const formik = useFormik({

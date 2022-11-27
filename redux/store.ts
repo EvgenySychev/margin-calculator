@@ -3,6 +3,7 @@ import financialParametersSlice from "./slices/financialParametersSlice";
 import autoParametersSlice from './slices/autoParametersSlice'
 import dataAutoParametersSlice from "./slices/dataAutoParametersSlice";
 import calculationToggleSlice from "./slices/calculationToggleSlice";
+import coefficientsSlice from "./slices/coefficientsSlice";
 import {
     TypedUseSelectorHook,
     useDispatch as useDispatchBase,
@@ -16,7 +17,8 @@ export function makeStore() {
             autoParameters: autoParametersSlice,
             dataAutoParameters: dataAutoParametersSlice,
             financialParameters: financialParametersSlice,
-            calculationToggle:calculationToggleSlice
+            calculationToggle:calculationToggleSlice,
+            coefficients:coefficientsSlice
         },
     });
 }

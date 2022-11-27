@@ -3,11 +3,13 @@ import {createSlice, Draft, PayloadAction} from '@reduxjs/toolkit';
 export type calculationToggleState = {
     toggle: boolean
     modelWasSelected: boolean
+    tiresCheck:boolean
 }
 
 const initialState: calculationToggleState = {
     toggle: false,
-    modelWasSelected: false
+    modelWasSelected: false,
+    tiresCheck:false
 } as const;
 
 export const calculationToggleSlice = createSlice({
@@ -26,6 +28,12 @@ export const calculationToggleSlice = createSlice({
         ) => {
             state.modelWasSelected = action.payload;
         },
+        setTiresCheck: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.tiresCheck>
+        ) => {
+            state.tiresCheck = action.payload;
+        },
     },
 });
 
@@ -34,6 +42,7 @@ export const getParametersState = (state: { calculationToggle: calculationToggle
 export const {
     setCalculate,
     setModelWasSelected,
+    setTiresCheck,
 } = calculationToggleSlice.actions;
 
 export default calculationToggleSlice.reducer;

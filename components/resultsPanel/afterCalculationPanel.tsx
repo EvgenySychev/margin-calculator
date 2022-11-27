@@ -7,22 +7,44 @@ export const AfterCalculationPanel = () => {
     const currentConfiguration = useAppSelector(state => state.autoParameters.configuration)
     const finance = useAppSelector(state => state.financialParameters)
     const data = useAppSelector(state => state.dataAutoParameters)
+    const tiresCheck = useAppSelector(state => state.calculationToggle.tiresCheck)
+    const tiresMarginRatio = useAppSelector(state => state.coefficients.tiresMarginRatio)
+    const tradeInMarginRatio = useAppSelector(state => state.coefficients.tradeInMarginRatio)
+    const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
 
     // @ts-ignore
     const model: ModelType = data.find(t => t.modelName == currentModel)
     const configuration = model.configuration.find(c => c.nameConfiguration === currentConfiguration)
     console.log(finance)
 
-    const marginKuzov = (parseInt(configuration.retailValue) - parseInt(configuration.entranceCost) - parseInt(finance.discount) - parseInt(configuration.discountTradeIn)).toString()
+    const tiresRecognizer = (check:boolean, tires: number) => {
+        if (check) {
+            return tires = -Math.abs(tires);
+        } else {
+            return tires*tiresMarginRatio
+        }
+    }
 
-    const bezDopSkidok = (parseInt(configuration.retailValue) - parseInt(configuration.discountTradeIn)).toString()
+    const retailValue = parseInt(configuration.retailValue)
+    const entranceCost = parseInt(configuration.entranceCost)
+    const discount = parseInt(finance.discount)
+    const discountTradeIn = parseInt(configuration.discountTradeIn)
+    const refundTradeIn = parseInt(configuration.refundTradeIn)
+    const additionalEquipment = parseInt(finance.additionalEquipment)
+    const tradeIn = parseInt(finance.tradeIn) * tradeInMarginRatio
+    const credit = parseInt(finance.credit)
+    const tires = tiresRecognizer(tiresCheck,parseInt(finance.tires))
 
-    const netPrice = (parseInt(configuration.retailValue) - parseInt(finance.discount) - parseInt(configuration.discountTradeIn)).toString()
+    const marginKuzov = (retailValue - entranceCost - discount - discountTradeIn).toString()
 
-    const km = (parseInt(marginKuzov) + parseInt(configuration.refundTradeIn) + parseInt(finance.additionalEquipment) * 0.65 + parseInt(finance.tradeIn) * 0.1 + parseInt(finance.credit) - parseInt(finance.tires)).toString()
+    const bezDopSkidok = (retailValue - discountTradeIn).toString()
 
-    const autoCoast = (parseInt(netPrice) + parseInt(finance.additionalEquipment)).toString()
-    const totalBenefit = (parseInt(configuration.discountTradeIn) + parseInt(finance.discount)).toString()
+    const netPrice = (retailValue - discount - discountTradeIn).toString()
+
+    const km = (parseInt(marginKuzov) + refundTradeIn + additionalEquipment * additionalEquipmentMarginRatio + tradeIn + credit + tires).toString()
+
+    const autoCoast = (parseInt(netPrice) + additionalEquipment).toString()
+    const totalBenefit = (discountTradeIn + discount).toString()
 
 
     return <div>
