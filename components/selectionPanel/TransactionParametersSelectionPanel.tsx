@@ -14,10 +14,10 @@ type FormikErrorType = {
     model?: string
     configuration?: string
     credit?: string
-    tyres?: string
-    equipment?: string
+    tires?: string
+    additionalEquipment?: string
     tradeIn?: string
-    discountDealer?: string
+    discount?: string
 }
 
 export const TransactionParametersSelectionPanel = () => {
@@ -48,6 +48,38 @@ export const TransactionParametersSelectionPanel = () => {
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
+            const reg = /^\d+$/;
+
+            if (!reg.test(values.credit)) {
+                errors.credit = 'Вводите только цифры';
+            } else if (values.credit.length > 6) {
+                errors.credit = 'Слишком большое значение';
+            }
+
+            if (!reg.test(values.tires)) {
+                errors.tires = 'Вводите только цифры';
+            } else if (values.tires.length > 6) {
+                errors.tires = 'Слишком большое значение';
+            }
+
+            if (!reg.test(values.additionalEquipment)) {
+                errors.additionalEquipment = 'Вводите только цифры';
+            } else if (values.additionalEquipment.length > 6) {
+                errors.additionalEquipment = 'Слишком большое значение';
+            }
+
+            if (!reg.test(values.tradeIn)) {
+                errors.tradeIn = 'Вводите только цифры';
+            } else if (values.tradeIn.length > 7) {
+                errors.tradeIn = 'Слишком большое значение';
+            }
+
+            if (!reg.test(values.discount)) {
+                errors.discount = 'Вводите только цифры';
+            } else if (values.discount.length > 6) {
+                errors.discount = 'Слишком большое значение';
+            }
+            return errors;
 
         },
         onSubmit: values => {
@@ -62,68 +94,113 @@ export const TransactionParametersSelectionPanel = () => {
 
             <div style={{
                 height: "30px",
-                marginTop: "15px",
+                marginTop: "30px",
                 display: "flex",
                 justifyContent: "space-between"
             }}>
-                <span>Кредит</span>
-                <input type="text" style={{textAlign: "right"}}
-                       {...formik.getFieldProps("credit")}/>
+                <span style={{
+                    width: "120px"}}>Кредит</span>
+                <span>
+                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                           {...formik.getFieldProps("credit")}/>
+                    <div>
+                        {formik.errors.credit ?
+                            <div
+                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.credit}</div> : null}
+                    </div>
+                </span>
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px",
+                marginTop: "30px",
                 display: "flex",
                 justifyContent: "space-between"
             }}>
-                <span>Шины</span>
-                <span>
+                <span style={{
+                    width: "120px"}}>Шины</span>
+                <span style={{
+                    width: "150px"}}>
                     <input onChange={onTiresGiftSwitch} checked={tiresGiftToggle}
                            type="checkbox"/>
                     <span style={{fontSize: "15px"}}>шины в подарок</span>
                 </span>
-                <input type="text" style={{textAlign: "right"}}
-                             {...formik.getFieldProps("tires")}/>
-            </div>
-            <div style={{
-                height: "30px",
-                marginTop: "15px",
-                display: "flex",
-                justifyContent: "space-between"
-            }}>
-                <span>Допы</span>
-                <input type="text" style={{textAlign: "right"}}
-                       {...formik.getFieldProps("additionalEquipment")}/>
-            </div>
-            <div style={{
-                height: "30px",
-                marginTop: "15px",
-                display: "flex",
-                justifyContent: "space-between"
-            }}>
-                <span>Трейд-ин</span>
                 <span>
+                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                           {...formik.getFieldProps("tires")}/>
+                    <div>
+                        {formik.errors.tires ?
+                            <div
+                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.tires}</div> : null}
+                    </div>
+                </span>
+            </div>
+            <div style={{
+                height: "30px",
+                marginTop: "30px",
+                display: "flex",
+                justifyContent: "space-between"
+            }}>
+                <span style={{
+                    width: "120px"}}>Допы</span>
+                <span>
+                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                           {...formik.getFieldProps("additionalEquipment")}/>
+                    <div>
+                        {formik.errors.additionalEquipment ?
+                            <div
+                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.additionalEquipment}</div> : null}
+                    </div>
+                </span>
+
+            </div>
+            <div style={{
+                height: "30px",
+                marginTop: "30px",
+                display: "flex",
+                justifyContent: "space-between"
+            }}>
+                <span style={{
+                    width: "120px"}}>Трейд-ин</span>
+                <span style={{
+                    width: "150px"}}>
                     <input onChange={onTradeInSwitch} checked={tradeInToggle}
                            type="checkbox"/>
                     <span style={{fontSize: "15px"}}>с трейд-ин</span>
                 </span>
-                <input type="text" style={{textAlign: "right"}}
-                       {...formik.getFieldProps("tradeIn")}/>
+                <span>
+                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                           {...formik.getFieldProps("tradeIn")}/>
+                    <div>
+                        {formik.errors.tradeIn ?
+                            <div
+                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.tradeIn}</div> : null}
+                    </div>
+                </span>
+
             </div>
             <div style={{
                 height: "30px",
-                marginTop: "15px",
+                marginTop: "30px",
                 display: "flex",
                 justifyContent: "space-between"
             }}>
-                <span>Доп.скидка</span>
-                <input type="text" style={{textAlign: "right"}}
-                       {...formik.getFieldProps("discount")}/>
+                <span style={{
+                    width: "120px"}}>Доп.скидка</span>
+                <span>
+                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                           {...formik.getFieldProps("discount")}/>
+                    <div>
+                        {formik.errors.discount ?
+                            <div
+                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.discount}</div> : null}
+                    </div>
+                </span>
+
             </div>
             <button style={{
                 height: "30px",
                 width: "200px",
-                marginTop: "50px",
+                marginTop: "20px",
             }} disabled={!modelWasSelected} type={'submit'}>Рассчитать
             </button>
         </form>
