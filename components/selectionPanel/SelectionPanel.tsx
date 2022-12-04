@@ -10,7 +10,7 @@ export const SelectionPanel = () => {
         border: "solid 2px grey"
     }}>
         <CarSelectionPanel/>
-        <ReportedCarSelection/>
+        {/*<ReportedCarSelection/>*/}
         <TransactionParametersSelectionPanel/>
     </div>
 }
