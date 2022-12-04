@@ -19,10 +19,16 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
 
 
-    // @ts-ignore
-    const model: ModelType = data.find(t => t.modelName == currentModel)
-    const configuration = model.configuration.find(c => c.nameConfiguration === currentConfiguration)
-    console.log(finance)
+    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
+        if (argument === undefined || argument === null) {
+            throw new TypeError(message);
+        }
+
+        return argument;
+    }
+
+    const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
+    const configuration = ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
 
     const toTiresRecognize = (check: boolean, tires: number) => {
         if (check) {
