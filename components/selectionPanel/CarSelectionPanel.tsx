@@ -5,13 +5,22 @@ import {
     setCalculate,
     setModelWasSelected
 } from "../../redux/slices/calculationToggleSlice";
+import {ConfigurationType, ModelType} from "../../redux/slices/dataAutoParametersSlice";
 
 export const CarSelectionPanel = () => {
 
     const models = useAppSelector(state => state.dataAutoParameters)
     const dispatch = useAppDispatch()
 
-    const [configurations, setConfigurations] = useState([])
+    const [configurations, setConfigurations] = useState<ConfigurationType[]>([])
+
+    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
+        if (argument === undefined || argument === null) {
+            throw new TypeError(message);
+        }
+
+        return argument;
+    }
 
     const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setModel(e.currentTarget.value))
@@ -19,9 +28,8 @@ export const CarSelectionPanel = () => {
         dispatch(setModelWasSelected(false))
         setConfigurations([])
         const modelName = e.target.options[e.target.selectedIndex].value;
-        const model = models.find(item => item.modelName === modelName);
+        const model:ModelType = ensure(models.find(item => item.modelName === modelName));
         if (model) {
-            // @ts-ignore
             setConfigurations(model.configuration);
         }
     }
@@ -36,7 +44,6 @@ export const CarSelectionPanel = () => {
         }
     }
 
-    // @ts-ignore
     return <div style={{margin: "10px", height:"30px" }}>
         <select style={{textAlign:"center", width: "220px", height:"30px", fontSize: "14px", fontWeight:"600"}}  id="carModel-select"
                 onChange={onChangeModel}>
@@ -50,7 +57,7 @@ export const CarSelectionPanel = () => {
         <select style={{marginLeft: "10px", textAlign:"center",width: "220px", height:"30px",fontSize: "14px",fontWeight:"600"}} id="modelConfiguration-select"
                 onChange={onChangeConfiguration}>
             <option value=""> -- Выберите комплектацию --</option>
-            {// @ts-ignore
+            {
                 configurations.map(c => <option key={c.id}
                                                 value={c.nameConfiguration}> -- {`${c.nameConfiguration}`} --</option>)
             }
