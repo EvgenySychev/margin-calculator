@@ -12,7 +12,6 @@ const HomePage = () => {
             height: "450px"
         }}>
           <SelectionPanel/>
-          
           <ResultsPanel/>
     </div>
 )
