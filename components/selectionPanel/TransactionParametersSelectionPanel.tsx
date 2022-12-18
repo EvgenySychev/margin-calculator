@@ -9,6 +9,7 @@ import {
 } from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
+import {LeasingCompanySelectionPanel} from "./leasingCompanySelectionPanel"
 
 type FormikErrorType = {
     model?: string
@@ -27,6 +28,7 @@ export const TransactionParametersSelectionPanel = () => {
 
     const dispatch = useAppDispatch()
     const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
+    const paymentMethod = useAppSelector(state=>state.calculationToggle.paymentMethod)
 
     const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
         setTiresGiftToggle(e.currentTarget.checked)
@@ -92,7 +94,8 @@ export const TransactionParametersSelectionPanel = () => {
     return <div style={{margin: "10px", marginTop: "30px"}}>
         <form onSubmit={formik.handleSubmit}>
 
-            <div style={{
+            {paymentMethod==="cash"
+            ? <div style={{
                 height: "30px",
                 marginTop: "30px",
                 display: "flex",
@@ -110,6 +113,10 @@ export const TransactionParametersSelectionPanel = () => {
                     </div>
                 </span>
             </div>
+            : <LeasingCompanySelectionPanel/>
+        }
+
+            
             <div style={{
                 height: "30px",
                 marginTop: "30px",

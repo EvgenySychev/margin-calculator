@@ -4,12 +4,14 @@ import autoParametersSlice from './slices/autoParametersSlice'
 import dataAutoParametersSlice from "./slices/dataAutoParametersSlice";
 import calculationToggleSlice from "./slices/calculationToggleSlice";
 import coefficientsSlice from "./slices/coefficientsSlice";
+import leasingCompanyParametersSlice from './slices/laesingCompanyParametersSlice';
 import {
     TypedUseSelectorHook,
     useDispatch as useDispatchBase,
     useSelector as useSelectorBase,
 } from 'react-redux';
 import {createWrapper} from 'next-redux-wrapper'
+
 
 export function makeStore() {
     return configureStore({
@@ -18,7 +20,8 @@ export function makeStore() {
             dataAutoParameters: dataAutoParametersSlice,
             financialParameters: financialParametersSlice,
             calculationToggle:calculationToggleSlice,
-            coefficients:coefficientsSlice
+            coefficients:coefficientsSlice,
+            leasingCompanyParameters:leasingCompanyParametersSlice
         },
     });
 }
