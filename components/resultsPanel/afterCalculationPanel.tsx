@@ -63,7 +63,7 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
         callback(km)
     }
 
-    const retailValue = parseInt(configuration.retailValue)
+    const retailValue = parseInt(configuration.retailValue) 
     const entranceCost = parseInt(configuration.entranceCost)
     const discount = parseInt(finance.discount)
     const discountTradeIn = toTradeInRecognize(tradeInCheck, parseInt(configuration.discountTradeIn), parseInt(configuration.importerDiscount))
@@ -74,12 +74,13 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
     const tires = toTiresRecognize(tiresCheck, parseInt(finance.tires))
     const refundDealer = parseInt(configuration.refundDealer)
 
-    const marginKuzov = (retailValue - entranceCost - discount - discountTradeIn).toString()
-    const bezDopSkidok = (retailValue - discountTradeIn).toString()
-    const netPrice = (retailValue - discount - discountTradeIn).toString()
-    const km = (parseInt(marginKuzov) + refundTradeIn + additionalEquipment * additionalEquipmentMarginRatio + tradeIn + credit + tires + refundDealer).toString()
-    const autoCoast = (parseInt(netPrice) + additionalEquipment).toString()
-    const totalBenefit = (discountTradeIn + discount).toString()
+    const marginKuzov = (retailValue - entranceCost - discount - discountTradeIn).toString() + ' ₽'
+    const bezDopSkidok = (retailValue - discountTradeIn).toString()  + ' ₽'
+    const netPrice = (retailValue - discount - discountTradeIn).toString()  + ' ₽'
+    const km = (parseInt(marginKuzov) + refundTradeIn + additionalEquipment * additionalEquipmentMarginRatio + tradeIn + credit + tires + refundDealer).toString()  + ' ₽'
+    const autoCoast = (parseInt(netPrice) + additionalEquipment).toString() + ' ₽'
+    const totalBenefit = (discountTradeIn + discount).toString() + ' ₽'
+    const retailValueStr = retailValue + ' ₽'
 
     toKmParameterSend(km)
 
@@ -88,7 +89,7 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
             height: "30px",
             marginTop: "15px",
             textAlign: "right"
-        }}>{configuration.retailValue}</div>
+        }}>{retailValueStr}</div>
         <div style={{
             height: "30px",
             marginTop: "15px",
@@ -117,7 +118,8 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
         <div style={{
             height: "30px",
             marginTop: "15px",
-            textAlign: "right"
+            textAlign: "right", 
+            width: "150px"
         }}>{autoCoast}</div>
     </div>
 }
