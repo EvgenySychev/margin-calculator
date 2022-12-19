@@ -9,7 +9,7 @@ import {
 } from "../../redux/slices/calculationToggleSlice";
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
-import {LeasingCompanySelectionPanel} from "./leasingCompanySelectionPanel"
+import {LeasingCompanySelectionPanel} from "./LeasingCompanySelectionPanel"
 
 type FormikErrorType = {
     model?: string
