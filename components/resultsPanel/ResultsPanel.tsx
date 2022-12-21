@@ -5,7 +5,11 @@ import {useState} from "react";
 
 export const ResultsPanel = () => {
 
-    const title = [
+    const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
+    const toggle = useAppSelector(state => state.calculationToggle.toggle)
+    const paymentMethod = useAppSelector(state=>state.calculationToggle.paymentMethod)
+
+    const [title,setTitle] = useState([
         "РРЦ",
         "Цена без доп.скидок",
         "Маржа кузов",
@@ -13,10 +17,7 @@ export const ResultsPanel = () => {
         "Общая выгода клиента",
         "КМ",
         "Итоговая стоимость авто"
-    ]
-    const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
-    const toggle = useAppSelector(state => state.calculationToggle.toggle)
-
+    ])
     const [km,setKm] = useState ('')
 
     const callback = (km:string) => {

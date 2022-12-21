@@ -10,7 +10,7 @@ export const LeasingCompanySelectionPanel = () => {
 
     const dispatch = useAppDispatch()
 
-    const onChangeleasingCompany = (e: ChangeEvent<HTMLSelectElement>) => {
+    const onChangeLeasingCompany = (e: ChangeEvent<HTMLSelectElement>) => {
          dispatch(setLeasingCompany(e.currentTarget.value))    
     }
 
@@ -20,7 +20,7 @@ export const LeasingCompanySelectionPanel = () => {
 
     return <div style={{ height:"30px" }}>
         <select style={{textAlign:"center", width: "220px", height:"30px", fontSize: "14px", fontWeight:"600"}}  id="leasingCompany-select"
-                onChange={onChangeleasingCompany}>
+                onChange={onChangeLeasingCompany}>
             <option value=""> -- Выберите компанию --</option>
             {leasingCompany.slice(1).map(m =>
                 <option key={m.id}
