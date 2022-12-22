@@ -6,6 +6,7 @@ export type calculationToggleState = {
     tiresCheck:boolean
     tradeInCheck:boolean
     paymentMethod: 'leasing' | 'cash'
+    leasingCompanyWasSelected:boolean
 }
 
 const initialState: calculationToggleState = {
@@ -13,7 +14,9 @@ const initialState: calculationToggleState = {
     modelWasSelected: false,
     tiresCheck:false,
     tradeInCheck:false,
-    paymentMethod:'cash'
+    paymentMethod:'cash',
+    leasingCompanyWasSelected: true
+
 
 } as const;
 
@@ -32,6 +35,12 @@ export const calculationToggleSlice = createSlice({
             action: PayloadAction<typeof initialState.modelWasSelected>
         ) => {
             state.modelWasSelected = action.payload;
+        },
+        setLeasingCompanyWasSelected: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.leasingCompanyWasSelected>
+        ) => {
+            state.leasingCompanyWasSelected = action.payload;
         },
         setTiresCheck: (
             state: Draft<typeof initialState>,
@@ -61,7 +70,8 @@ export const {
     setModelWasSelected,
     setTiresCheck,
     setTradeInCheck,
-    setPaymentMethod
+    setPaymentMethod,
+    setLeasingCompanyWasSelected
 } = calculationToggleSlice.actions;
 
 export default calculationToggleSlice.reducer;

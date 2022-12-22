@@ -28,6 +28,7 @@ export const TransactionParametersSelectionPanel = () => {
 
     const dispatch = useAppDispatch()
     const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
+    const leasingCompanyWasSelected = useAppSelector(state => state.calculationToggle.leasingCompanyWasSelected)
     const paymentMethod = useAppSelector(state=>state.calculationToggle.paymentMethod)
 
     const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -87,7 +88,6 @@ export const TransactionParametersSelectionPanel = () => {
         onSubmit: values => {
             dispatch(setParameters(values))
             dispatch(setCalculate(true))
-            console.log(values)
         },
     })
 
@@ -208,7 +208,7 @@ export const TransactionParametersSelectionPanel = () => {
                 height: "30px",
                 width: "200px",
                 marginTop: "20px",
-            }} disabled={!modelWasSelected} type={'submit'}>Рассчитать
+            }} disabled={!(modelWasSelected && leasingCompanyWasSelected)} type={'submit'}>Рассчитать
             </button>
         </form>
 
