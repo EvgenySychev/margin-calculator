@@ -1,7 +1,7 @@
 import { PaymentMethod } from "../components/paymentMethod/PaymentMethod"
 
 import { SelectionPanel } from "../components/selectionPanel/SelectionPanel";
-import { ResultsPanel } from "../components/resultsPanel/ResultsPanel";
+import { ResultsPanelCopy } from "../components/resultsPanel/ResultsPanel copy";
 
 
 const HomePage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
                 height: "450px"
             }}>
                 <SelectionPanel />
-                <ResultsPanel />
+                <ResultsPanelCopy />
             </div>
         </div>
 
