@@ -2,7 +2,6 @@ import { CarSelectionPanel } from "./CarSelectionPanel";
 import {
     TransactionParametersSelectionPanel
  } from "./TransactionParametersSelectionPanel";
-import {ReportedCarSelection} from "./ReportedCarSelection";
 
 export const SelectionPanel = () => {
     return <div style={{
