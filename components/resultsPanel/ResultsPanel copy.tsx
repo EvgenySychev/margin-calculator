@@ -1,7 +1,5 @@
 import { ResultPanelItem } from "./ResultPanelItem";
 import { useAppSelector } from "../../redux/store";
-import { AfterCalculationPanel } from "./afterCalculationPanel";
-import { useState } from "react";
 import {calculationCore} from "../utils/calculationСore"
 
 import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
@@ -29,7 +27,13 @@ export const ResultsPanelCopy = () => {
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
 
+    console.log(data);
+    debugger
+
     const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
+
+    console.log(model + 'model');
+    
     const configuration = ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
 
     const retailValue = configuration.retailValue
