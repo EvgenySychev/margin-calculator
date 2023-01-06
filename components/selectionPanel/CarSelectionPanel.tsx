@@ -6,6 +6,7 @@ import {
     setModelWasSelected
 } from "../../redux/slices/calculationToggleSlice";
 import {ConfigurationType, ModelType} from "../../redux/slices/dataAutoParametersSlice";
+import {ensure} from "../utils/ensureFunction"
 
 export const CarSelectionPanel = () => {
 
@@ -14,13 +15,7 @@ export const CarSelectionPanel = () => {
 
     const [configurations, setConfigurations] = useState<ConfigurationType[]>([])
 
-    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
-        if (argument === undefined || argument === null) {
-            throw new TypeError(message);
-        }
-
-        return argument;
-    }
+    
 
     const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setModel(e.currentTarget.value))
