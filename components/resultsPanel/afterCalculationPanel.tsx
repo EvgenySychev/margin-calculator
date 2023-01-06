@@ -1,5 +1,6 @@
 import {useAppSelector} from "../../redux/store";
 import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
+import {ensure} from "../utils/ensureFunction"
 
 type AfterCalculationPanelPropsType = {
     callback: (km: string) => void
@@ -17,15 +18,6 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
     const tradeInMarginRatio = useAppSelector(state => state.coefficients.tradeInMarginRatio)
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
-
-
-    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
-        if (argument === undefined || argument === null) {
-            throw new TypeError(message);
-        }
-
-        return argument;
-    }
 
     const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
     const configuration = ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
