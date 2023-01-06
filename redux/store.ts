@@ -12,6 +12,7 @@ import {
     useSelector as useSelectorBase,
 } from 'react-redux';
 import {createWrapper} from 'next-redux-wrapper'
+import calculationResultSlice from "./slices/calculationResultSlice";
 
 
 export function makeStore() {
@@ -23,7 +24,8 @@ export function makeStore() {
             calculationToggle:calculationToggleSlice,
             coefficients:coefficientsSlice,
             dataLeasingCompanyParameters:dataLeasingCompanyParametersSlice,
-            leasingCompanyParameters:lasingCompanyParametersSlice
+            leasingCompanyParameters:lasingCompanyParametersSlice,
+            calculationResult:calculationResultSlice
         },
     });
 }

@@ -15,14 +15,6 @@ export const CarSelectionPanel = () => {
 
     const [configurations, setConfigurations] = useState<ConfigurationType[]>([])
 
-    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
-        if (argument === undefined || argument === null) {
-            throw new TypeError(message);
-        }
-
-        return argument;
-    }
-
     const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setModel(e.currentTarget.value))
         dispatch(setCalculate(false))
@@ -31,9 +23,8 @@ export const CarSelectionPanel = () => {
         
         const modelName = e.target.options[e.target.selectedIndex].value;
         const model:ModelType = ensure(models.find(item => item.modelName === modelName));
-        if (model) {
-            setConfigurations(model.configuration);
-        }
+
+        setConfigurations(model.configuration);
     }
 
     const onChangeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {

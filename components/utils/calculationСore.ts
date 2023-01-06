@@ -19,7 +19,7 @@ type calculationCoreType = {
     additionalEquipmentMarginRatio: number
 }
 
-export const calculationCore = ({
+export const calculationCore = (/*{
     tiresMarginRatio,
     tradeInMarginRatio,
     retailValue,
@@ -37,7 +37,7 @@ export const calculationCore = ({
     refundDealer,
     additionalEquipmentMarginRatio
 
-}: calculationCoreType) => {
+}: calculationCoreType*/) => {/*
 
     const toTiresRecognize = (check: boolean, tires: number) => {
         if (check) {
@@ -88,16 +88,16 @@ export const calculationCore = ({
     const autoCoast = (parseInt(netPrice) + additionalEquipment).toString() + ' ₽'
     const totalBenefit = (discountTradeIn + discount).toString() + ' ₽'
     const retailValueStr = retailValue + ' ₽'
-
+*/
 
     return {
-        "РРЦ":retailValueStr,
-        "Цена без доп.скидок":bezDopSkidok,
-        "Маржа кузов":marginKuzov,
-        "Цена с доп.скидокой":sDopSkidoy,
-        "АВ":credit,
-        "Общая выгода клиента":totalBenefit,
-        "КМ": km,
-        "Итоговая стоимость авто":autoCoast
+        "РРЦ":"retailValueStr",
+        "Цена без доп.скидок":"bezDopSkidok",
+        "Маржа кузов":"marginKuzov",
+        "Цена с доп.скидокой":"sDopSkidoy",
+        "АВ":"credit",
+        "Общая выгода клиента":"totalBenefit",
+        "КМ": 'km',
+        "Итоговая стоимость авто":'autoCoast'
     }
 }

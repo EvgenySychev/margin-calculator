@@ -1,5 +1,5 @@
-import { ResultPanelItem } from "./ResultPanelItem";
-import { useAppSelector } from "../../redux/store";
+import {ResultPanelItem} from "./ResultPanelItem";
+import {useAppSelector} from "../../redux/store";
 import {calculationCore} from "../utils/calculationСore"
 
 import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
@@ -27,60 +27,58 @@ export const ResultsPanelCopy = () => {
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
 
-    console.log(data);
-    debugger
+    const model = ensure<ModelType>(data.find(t => t.modelName === currentModel))
 
-    const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
+    const calculateResult = useAppSelector(state => state.calculationResult)
+    console.log(calculateResult)
 
-    console.log(model + 'model');
-    
-    const configuration = ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
-
-    const retailValue = configuration.retailValue
-    const entranceCost = configuration.entranceCost
-    const discount = finance.discount
-    const discountTradeIn =  configuration.discountTradeIn
-    const importerDiscount =  configuration.importerDiscount
-    const refundTradeIn =  configuration.refundTradeIn
-    const additionalEquipment =  finance.additionalEquipment
-    const tradeIn =  finance.tradeIn
-    const credit =  finance.credit
-    const tires =  finance.tires
-    const refundDealer =  configuration.refundDealer
+    //const configuration =ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
+    // const retailValue = configuration.retailValue
+    // const entranceCost = configuration.entranceCost
+    // const discount = finance.discount
+    // const discountTradeIn = configuration.discountTradeIn
+    // const importerDiscount = configuration.importerDiscount
+    // const refundTradeIn = configuration.refundTradeIn
+    // const additionalEquipment = finance.additionalEquipment
+    // const tradeIn = finance.tradeIn
+    // const credit = finance.credit
+    // const tires = finance.tires
+    // const refundDealer = configuration.refundDealer
 
 
-    const calculationResult = calculationCore({tiresMarginRatio,
-        tradeInMarginRatio,
-        retailValue,
-        entranceCost,
-        discount,
-        tradeInCheck,
-        tiresCheck,
-        discountTradeIn,
-        importerDiscount,
-        refundTradeIn,
-        additionalEquipment,
-        tradeIn,
-        credit,
-        tires,
-        refundDealer,
-        additionalEquipmentMarginRatio})
+    // const calculationResult = calculationCore({
+    //     tiresMarginRatio,
+    //     tradeInMarginRatio,
+    //     retailValue,
+    //     entranceCost,
+    //     discount,
+    //     tradeInCheck,
+    //     tiresCheck,
+    //     discountTradeIn,
+    //     importerDiscount,
+    //     refundTradeIn,
+    //     additionalEquipment,
+    //     tradeIn,
+    //     credit,
+    //     tires,
+    //     refundDealer,
+    //     additionalEquipmentMarginRatio
+    // })
 
-        const calculationResultItem = Object.entries(calculationResult)
+    //const calculationResultItem = Object.entries(calculationResult)
 
     return <div style={{
         margin: "15px",
         border: "solid 2px grey"
     }}>
-        <div style={{ margin: "10px", textAlign: "center", height: "30px" }}>
+        <div style={{margin: "10px", textAlign: "center", height: "30px"}}>
             РАСЧЕТ
         </div>
 
 
-
-        <div style={{ display: "flex", height: "300px", margin: "15px", width: "400px" }}>
+        <div style={{display: "flex", height: "300px", margin: "15px", width: "400px"}}>
             <div>
-                {calculationResultItem.map((t,i) => <ResultPanelItem key={i} title={t[0]}  value={t[1]} />)}
+
             </div>
         </div>
         {/* {parseInt(km) < minAutoMargin && <div style={{ fontSize: "14px", color: "red", width: "300px", margin: "0 auto", textAlign: "center" }}>

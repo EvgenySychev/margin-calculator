@@ -8,7 +8,7 @@ type AfterCalculationPanelPropsType = {
 }
 
 export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType) => {
-
+/*
     const currentModel = useAppSelector(state => state.autoParameters.model)
     const currentConfiguration = useAppSelector(state => state.autoParameters.configuration)
     const finance = useAppSelector(state => state.financialParameters)
@@ -20,7 +20,8 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
 
-    const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
+    //const model: ModelType = ensure(data.find(t => t.modelName == currentModel))
+    const model: ModelType = data.find(t => t.modelName == currentModel)
     const configuration = ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
 
     const toTiresRecognize = (check: boolean, tires: number) => {
@@ -56,7 +57,7 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
         callback(km)
     }
 
-    const retailValue = parseInt(configuration.retailValue) 
+    const retailValue = parseInt(configuration.retailValue)
     const entranceCost = parseInt(configuration.entranceCost)
     const discount = parseInt(finance.discount)
     const discountTradeIn = toTradeInRecognize(tradeInCheck, parseInt(configuration.discountTradeIn), parseInt(configuration.importerDiscount))
@@ -114,5 +115,5 @@ export const AfterCalculationPanel = ({callback}: AfterCalculationPanelPropsType
             textAlign: "right", 
             width: "150px"
         }}>{autoCoast}</div>
-    </div>
+    </div>*/
 }
