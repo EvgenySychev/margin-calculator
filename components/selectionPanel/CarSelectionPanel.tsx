@@ -15,13 +15,13 @@ export const CarSelectionPanel = () => {
 
     const [configurations, setConfigurations] = useState<ConfigurationType[]>([])
 
-    // function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
-    //     if (argument === undefined || argument === null) {
-    //         throw new TypeError(message);
-    //     }
+    function ensure<T>(argument: T | undefined | null, message: string = 'This value was promised to be there.'): T {
+        if (argument === undefined || argument === null) {
+            throw new TypeError(message);
+        }
 
-    //     return argument;
-    // }
+        return argument;
+    }
 
     const onChangeModel = (e: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setModel(e.currentTarget.value))
