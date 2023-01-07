@@ -10,7 +10,6 @@ import {
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 import {LeasingCompanySelectionPanel} from "./LeasingCompanySelectionPanel"
-import {calculationCore} from "../utils/calculationСore";
 
 type FormikErrorType = {
     model?: string
