@@ -1,5 +1,6 @@
 import {ensure} from "../utils/ensureFunction"
 import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
+import {paymentMethodType} from "../paymentMethod/PaymentMethod"
 
 type calculationCoreType = {
     currentModel: string
@@ -12,6 +13,8 @@ type calculationCoreType = {
     tradeInMarginRatio: number
     additionalEquipmentMarginRatio: number
     minAutoMargin:number
+    paymentMethod: paymentMethodType
+    percentAB:string
 }
 
 export const calculationCore = ({
@@ -24,7 +27,9 @@ export const calculationCore = ({
     tiresMarginRatio,
     tradeInMarginRatio,
     additionalEquipmentMarginRatio,
-    minAutoMargin
+    minAutoMargin,
+    paymentMethod,
+    percentAB
 }:calculationCoreType) => {
 
     const toTiresKmRecognize = (check: boolean, tires: number) => {
@@ -77,18 +82,21 @@ export const calculationCore = ({
     const credit = finance.credit
     const tires = finance.tires
     const refundDealer = configuration.refundDealer
+    const discountLeasing = configuration.discountLeasing
 
-    const retailValueInt = parseInt(retailValue)
-    const entranceCostInt = parseInt(entranceCost)
-    const discountInt = parseInt(discount)
-    const discountTradeInInt = toTradeInRecognize(tradeInCheck, parseInt(discountTradeIn), parseInt(importerDiscount))
-    const refundTradeInInt = toTradeInRefundRecognize(tradeInCheck, parseInt(refundTradeIn))
-    const additionalEquipmentInt = parseInt(additionalEquipment)
-    const tradeInInt = toTradeInMarginRefundRecognize(tradeInCheck, parseInt(tradeIn))
-    const creditInt = parseInt(credit)
-    const tiresKmInt = toTiresKmRecognize(tiresCheck, parseInt(tires))
-    const tiresInt = toTiresRecognize(tiresCheck, parseInt(tires))
-    const refundDealerInt = parseInt(refundDealer)
+    const retailValueInt = Number(retailValue)
+    const entranceCostInt = Number(entranceCost)
+    const discountInt = Number(discount)
+    const discountTradeInInt = toTradeInRecognize(tradeInCheck, Number(discountTradeIn), Number(importerDiscount))
+    const refundTradeInInt = toTradeInRefundRecognize(tradeInCheck, Number(refundTradeIn))
+    const additionalEquipmentInt = Number(additionalEquipment)
+    const tradeInInt = toTradeInMarginRefundRecognize(tradeInCheck, Number(tradeIn))
+    const creditInt = Number(credit)
+    const tiresKmInt = toTiresKmRecognize(tiresCheck, Number(tires))
+    const tiresInt = toTiresRecognize(tiresCheck, Number(tires))
+    const refundDealerInt = Number(refundDealer)
+    const percentABInt = Number(percentAB)/100
+    const discountLeasingInt = Number(discountLeasing)/100
 
     const marginKuzov:number = (retailValueInt - entranceCostInt - discountInt - discountTradeInInt)
     const bezDopSkidok:number = (retailValueInt - discountTradeInInt)
@@ -99,8 +107,18 @@ export const calculationCore = ({
     const autoCoast:number = (netPrice + additionalEquipmentInt + tiresInt)
     const totalBenefit:number = (discountTradeInInt + discountInt)
 
+    const retailLeasingValueInt = retailValueInt - retailValueInt*discountLeasingInt
+    const entranceLeasingCostInt = retailValueInt -  retailValueInt*(discountLeasingInt+0.02)
+    const marginKuzovLeasing = retailLeasingValueInt - entranceLeasingCostInt-discountInt
+    const kmLeasing = (marginKuzovLeasing + additionalEquipmentInt * additionalEquipmentMarginRatio 
+        + tiresKmInt +  retailLeasingValueInt*percentABInt)
+    const totalBenefitLeasing = retailValueInt*discountLeasingInt + discountInt
+    const sDopSkidoyLeasing = retailLeasingValueInt - discountInt
+    const autoCoastLeasing = retailLeasingValueInt + additionalEquipmentInt + tiresInt - discountInt
 
-    return (
+
+    return ( paymentMethod === 'cash'
+        ?
             {  "РРЦ":retailValueInt,
                 "Цена без доп.скидок":bezDopSkidok,
                 "Маржа кузов":marginKuzov,
@@ -109,6 +127,15 @@ export const calculationCore = ({
                 "Общая выгода клиента":totalBenefit,
                 "КМ": km,
                 "Итоговая стоимость авто":autoCoast
-            }    
+            } 
+        :   {  "РРЦ":retailValueInt,
+            "Цена без доп.скидок":retailLeasingValueInt,
+            "Маржа кузов":marginKuzovLeasing,
+            "Цена с доп.скидокой":sDopSkidoyLeasing,
+            "АВ":retailLeasingValueInt*percentABInt,
+            "Общая выгода клиента":totalBenefitLeasing,
+            "КМ": kmLeasing,
+            "Итоговая стоимость авто":autoCoastLeasing
+        }   
     ) 
 }

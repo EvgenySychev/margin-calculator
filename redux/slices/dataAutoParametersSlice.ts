@@ -12,6 +12,7 @@ export type ConfigurationType = {
     discountEquipment: string
     discountDealer: string
     refundDealer: string
+    discountLeasing: string 
 }
 
 export type ModelType = {
@@ -39,6 +40,7 @@ const initialState: DataModelType = [
                 discountEquipment: '0',
                 discountDealer: '0',
                 refundDealer: '0',
+                discountLeasing: '0'
             }]
     },
     {
@@ -57,6 +59,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '100000',
                 refundDealer: '100000',
+                discountLeasing: '15'
             },
             {
                 id: 2,
@@ -70,6 +73,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '100000',
                 refundDealer: '100000',
+                discountLeasing: '15'
             },
         ]
     },
@@ -89,6 +93,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '22'
             },
             {
                 id: 2,
@@ -102,6 +107,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '22'
             },
         ]
     },
@@ -121,6 +127,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '23'
             },
             {
                 id: 2,
@@ -134,6 +141,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '23'
             },
         ]
     },
@@ -153,6 +161,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '23'
             },
             {
                 id: 2,
@@ -166,6 +175,7 @@ const initialState: DataModelType = [
                 discountEquipment: '50000',
                 discountDealer: '200000',
                 refundDealer: '200000',
+                discountLeasing: '23'
             },
         ]
     }

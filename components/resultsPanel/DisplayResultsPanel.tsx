@@ -15,15 +15,20 @@ export const DisplayResultsPanel = () => {
     const tradeInMarginRatio = useAppSelector(state => state.coefficients.tradeInMarginRatio)
     const additionalEquipmentMarginRatio = useAppSelector(state => state.coefficients.additionalEquipmentMarginRatio)
     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
+    const paymentMethod = useAppSelector(state => state.calculationToggle.paymentMethod)
+    const percentAB = useAppSelector(state => state.leasingCompanyParameters.percent)
 
-    const calculationResult = calculationCore({currentModel,
+    const calculationResult = calculationCore({
+        currentModel,
         currentConfiguration,
         finance,dataAutoParameters,
         tiresCheck,tradeInCheck,
         tiresMarginRatio,
         tradeInMarginRatio,
         additionalEquipmentMarginRatio,
-        minAutoMargin}
+        minAutoMargin,
+        paymentMethod,
+        percentAB}
         )
 
     const result = Object.entries(calculationResult)

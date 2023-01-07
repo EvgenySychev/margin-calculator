@@ -4,7 +4,7 @@ import {
     setPaymentMethod
 } from "../../redux/slices/calculationToggleSlice";
 
-type paymentMethodType = 'leasing' | 'cash'
+export type paymentMethodType = 'leasing' | 'cash'
 
 export const PaymentMethod = () => {
 
