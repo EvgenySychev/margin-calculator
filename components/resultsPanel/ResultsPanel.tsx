@@ -16,17 +16,12 @@ export const ResultsPanel = () => {
         </div>
         <div style={{height: "300px", margin: "15px", width: "400px"}}>
             <div>
-
                 {calculate
                     ? <DisplayResultsPanel/>
                     : <span>Введите данные для расчета</span>
                 }
-
             </div>
         </div>
-        {/* {parseInt(km) < minAutoMargin && <div style={{ fontSize: "14px", color: "red", width: "300px", margin: "0 auto", textAlign: "center" }}>
-            Внимание! КМ меньше {`${minAutoMargin}`}. Необходимо согласовать с РОП
-        </div>} */}
     </div>
 )
     }

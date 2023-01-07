@@ -101,7 +101,7 @@ export const calculationCore = ({
 
 
     return (
-            {  "РРЦ":retailValue,
+            {  "РРЦ":retailValueInt,
                 "Цена без доп.скидок":bezDopSkidok,
                 "Маржа кузов":marginKuzov,
                 "Цена с доп.скидокой":sDopSkidoy,
