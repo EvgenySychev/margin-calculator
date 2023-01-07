@@ -1,6 +1,6 @@
 export type ResultPanelItemType = {
     title: string
-    value:string
+    value:any
 }
 
 export const ResultPanelItem = ({title,value}: ResultPanelItemType) => {

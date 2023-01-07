@@ -11,7 +11,6 @@ import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 import {LeasingCompanySelectionPanel} from "./LeasingCompanySelectionPanel"
 import {calculationCore} from "../utils/calculationСore";
-import {setCalculateResult} from "../../redux/slices/calculationResultSlice";
 
 type FormikErrorType = {
     model?: string
@@ -90,7 +89,7 @@ export const TransactionParametersSelectionPanel = () => {
         onSubmit: values => {
             dispatch(setParameters(values))
             dispatch(setCalculate(true))
-            dispatch(setCalculateResult(calculationCore()))
+            
         },
     })
 

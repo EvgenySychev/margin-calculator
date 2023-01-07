@@ -1,44 +1,47 @@
-// import {ResultPanelItem} from "./ResultPanelItem";
-// import {useAppSelector} from "../../redux/store";
-// import {AfterCalculationPanel} from "./afterCalculationPanel";
-// import {useState} from "react";
+import {ResultPanelItem} from "./ResultPanelItem";
+import {useAppSelector, useAppDispatch} from "../../redux/store";
+import {calculationCore} from "../utils/calculationСore"
 
-// export const ResultsPanel = () => {
+import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
+import {ensure} from "../utils/ensureFunction"
+import {setCalculateResult} from "../../redux/slices/calculationResultSlice";
+import { useState } from "react";
 
-//     const minAutoMargin = useAppSelector(state => state.coefficients.minAutoMargin)
-//     const toggle = useAppSelector(state => state.calculationToggle.toggle)
-//     const paymentMethod = useAppSelector(state=>state.calculationToggle.paymentMethod)
+export const ResultsPanel = () => {
 
-//     const [title,setTitle] = useState([
-//         "РРЦ",
-//         "Цена без доп.скидок",
-//         "Маржа кузов",
-//         "Стоимость без доп.оборудования",
-//         "Общая выгода клиента",
-//         "КМ",
-//         "Итоговая стоимость авто"
-//     ])
-//     const [km,setKm] = useState ('')
+    //const [calculationResult, setCalculationResult] = useState({})
 
-//     const callback = (km:string) => {
-//         return setKm(km)
-//     }
+    //const dispatch = useAppDispatch
 
-//     return <div style={{
-//         margin: "15px",
-//         border: "solid 2px grey"
-//     }}>
-//         <div style={{margin: "10px", textAlign:"center", height: "30px"}}>
-//             РАСЧЕТ
-//         </div>
-//         <div style={{display: "flex", height: "300px", margin: "15px", width: "400px"}}>
-//             <div>
-//                 {title.map(t => <ResultPanelItem key={t} title={t}/>)}
-//             </div>
-//             {toggle
-//                 ? <AfterCalculationPanel callback = {callback}/>
-//                 : ''}
-//         </div>
-//         {parseInt(km) < minAutoMargin && <div style={{fontSize: "14px", color: "red", width: "300px",margin: "0 auto", textAlign: "center"}}> Внимание! КМ меньше {`${minAutoMargin}`}. Необходимо согласовать с РОП </div>}
-//     </div>
-// }
+    const calculate = useAppSelector(state => state.calculationToggle.toggle)
+    
+        //setCalculationResult(calculationCore())
+
+    const calculationResult = calculationCore()
+
+    //const calculationResult = useAppSelector(state => state.calculationResult.result)
+    const result = Object.entries(calculationResult)
+    console.log(calculationResult);
+    console.log(result);
+    
+    
+
+    return <div style={{
+        margin: "15px",
+        border: "solid 2px grey"
+    }}>
+        <div style={{margin: "10px", textAlign: "center", height: "30px"}}>
+            РАСЧЕТ
+        </div>
+
+
+        <div style={{display: "flex", height: "300px", margin: "15px", width: "400px"}}>
+            <div>
+{result.map((r,i)=> <ResultPanelItem key={i} title={r[0]} value={r[1]}/> )}
+            </div>
+        </div>
+        {/* {parseInt(km) < minAutoMargin && <div style={{ fontSize: "14px", color: "red", width: "300px", margin: "0 auto", textAlign: "center" }}>
+            Внимание! КМ меньше {`${minAutoMargin}`}. Необходимо согласовать с РОП
+        </div>} */}
+    </div>
+}
