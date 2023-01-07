@@ -27,11 +27,18 @@ export const calculationCore = ({
     minAutoMargin
 }:calculationCoreType) => {
 
-    const toTiresRecognize = (check: boolean, tires: number) => {
+    const toTiresKmRecognize = (check: boolean, tires: number) => {
         if (check) {
             return -Math.abs(tires);
         } else {
             return tires * tiresMarginRatio
+        }
+    }
+    const toTiresRecognize = (check: boolean, tires: number) => {
+        if (!check) {
+            return Math.abs(tires);
+        } else {
+            return 0
         }
     }
     const toTradeInRecognize = (check: boolean, tradeInDiscount: number, importerDiscount: number) => {
@@ -79,25 +86,26 @@ export const calculationCore = ({
     const additionalEquipmentInt = parseInt(additionalEquipment)
     const tradeInInt = toTradeInMarginRefundRecognize(tradeInCheck, parseInt(tradeIn))
     const creditInt = parseInt(credit)
+    const tiresKmInt = toTiresKmRecognize(tiresCheck, parseInt(tires))
     const tiresInt = toTiresRecognize(tiresCheck, parseInt(tires))
     const refundDealerInt = parseInt(refundDealer)
 
-    const marginKuzov = (retailValueInt - entranceCostInt - discountInt - discountTradeInInt).toString() + ' ₽'
-    const bezDopSkidok = (retailValueInt - discountTradeInInt).toString() + ' ₽'
-    const sDopSkidoy = (parseInt(bezDopSkidok)-discountInt) + ' ₽'
-    const netPrice = (retailValueInt - discountInt - discountTradeInInt).toString() + ' ₽'
-    const km = (parseInt(marginKuzov) + refundTradeIn + additionalEquipmentInt * additionalEquipmentMarginRatio + tradeInInt + creditInt + tiresInt + refundDealerInt).toString() + ' ₽'
-    const autoCoast = (parseInt(netPrice) + additionalEquipment).toString() + ' ₽'
-    const totalBenefit = (discountTradeIn + discount).toString() + ' ₽'
-    const retailValueStr = retailValue + ' ₽'
+    const marginKuzov:number = (retailValueInt - entranceCostInt - discountInt - discountTradeInInt)
+    const bezDopSkidok:number = (retailValueInt - discountTradeInInt)
+    const sDopSkidoy:number = (bezDopSkidok-discountInt)
+    const netPrice:number = (retailValueInt - discountInt - discountTradeInInt)
+    const km:number= (marginKuzov + refundTradeInInt + additionalEquipmentInt * additionalEquipmentMarginRatio + 
+        tradeInInt + creditInt + tiresKmInt + refundDealerInt)
+    const autoCoast:number = (netPrice + additionalEquipmentInt + tiresInt)
+    const totalBenefit:number = (discountTradeInInt + discountInt)
 
 
     return (
-            {  "РРЦ":retailValueStr,
+            {  "РРЦ":retailValue,
                 "Цена без доп.скидок":bezDopSkidok,
                 "Маржа кузов":marginKuzov,
                 "Цена с доп.скидокой":sDopSkidoy,
-                "АВ":credit,
+                "АВ":creditInt,
                 "Общая выгода клиента":totalBenefit,
                 "КМ": km,
                 "Итоговая стоимость авто":autoCoast

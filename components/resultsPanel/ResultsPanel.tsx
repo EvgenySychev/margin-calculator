@@ -14,7 +14,7 @@ export const ResultsPanel = () => {
         <div style={{margin: "10px", textAlign: "center", height: "30px"}}>
             РАСЧЕТ
         </div>
-        <div style={{display: "flex", height: "300px", margin: "15px", width: "400px"}}>
+        <div style={{height: "300px", margin: "15px", width: "400px"}}>
             <div>
 
                 {calculate
