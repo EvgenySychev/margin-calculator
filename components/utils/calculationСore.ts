@@ -46,6 +46,13 @@ export const calculationCore = ({
             return 0
         }
     }
+        const toTiresPrezentRecognize = (check: boolean, tires: number) => {
+        if (check) {
+            return Math.abs(tires);
+        } else {
+            return 0
+        }
+    }
     const toTradeInRecognize = (check: boolean, tradeInDiscount: number, importerDiscount: number) => {
         if (check) {
             return tradeInDiscount;
@@ -94,6 +101,7 @@ export const calculationCore = ({
     const creditInt = Number(credit)
     const tiresKmInt = toTiresKmRecognize(tiresCheck, Number(tires))
     const tiresInt = toTiresRecognize(tiresCheck, Number(tires))
+    const tiresIntPresent = toTiresPrezentRecognize(tiresCheck, Number(tires))
     const refundDealerInt = Number(refundDealer)
     const percentABInt = Number(percentAB)/100
     const discountLeasingInt = Number(discountLeasing)/100
@@ -105,7 +113,7 @@ export const calculationCore = ({
     const km:number= (marginKuzov + refundTradeInInt + additionalEquipmentInt * additionalEquipmentMarginRatio + 
         tradeInInt + creditInt + tiresKmInt + refundDealerInt)
     const autoCoast:number = (netPrice + additionalEquipmentInt + tiresInt)
-    const totalBenefit:number = (discountTradeInInt + discountInt)
+    const totalBenefit:number = (discountTradeInInt + discountInt + tiresIntPresent)
 
     const retailLeasingValueInt = retailValueInt - retailValueInt*discountLeasingInt
     const entranceLeasingCostInt = retailValueInt -  retailValueInt*(discountLeasingInt+0.02)

@@ -57,8 +57,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '50000',
                 discountTires: '40000',
                 discountEquipment: '50000',
-                discountDealer: '100000',
-                refundDealer: '100000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '15'
             },
             {
@@ -71,8 +71,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '50000',
                 discountTires: '40000',
                 discountEquipment: '50000',
-                discountDealer: '100000',
-                refundDealer: '100000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '15'
             },
         ]
@@ -91,8 +91,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '60000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '22'
             },
             {
@@ -105,8 +105,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '60000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '22'
             },
         ]
@@ -125,8 +125,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '110000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '23'
             },
             {
@@ -139,8 +139,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '110000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '23'
             },
         ]
@@ -159,8 +159,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '180000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '23'
             },
             {
@@ -173,8 +173,8 @@ const initialState: DataModelType = [
                 refundTradeIn: '180000',
                 discountTires: '50000',
                 discountEquipment: '50000',
-                discountDealer: '200000',
-                refundDealer: '200000',
+                discountDealer: '0',
+                refundDealer: '0',
                 discountLeasing: '23'
             },
         ]
