@@ -37,7 +37,7 @@ export const DisplayResultsPanel = () => {
     return  <div>
                 {result.map((r,i)=> <ResultPanelItem key={i} title={r[0]} value={r[1]}/> )}
                 {km < minAutoMargin && <div style={{ fontSize: "14px", color: "red", width: "300px", margin: "0 auto", textAlign: "center" }}>
-            Внимание! КМ меньше {`${minAutoMargin}`}. Необходимо согласовать с РОП
+            Внимание! КМ меньше {`${minAutoMargin}`} ₽. Необходимо согласовать с РОП
         </div>}
             </div>    
 }
