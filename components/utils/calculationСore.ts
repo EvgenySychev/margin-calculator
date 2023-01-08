@@ -1,5 +1,5 @@
 import {ensure} from "../utils/ensureFunction"
-import {ModelType} from "../../redux/slices/dataAutoParametersSlice";
+import {ModelType,ConfigurationType} from "../../redux/slices/dataAutoParametersSlice";
 import {paymentMethodType} from "../paymentMethod/PaymentMethod"
 
 type calculationCoreType = {
@@ -68,8 +68,8 @@ export const calculationCore = ({
         }
     }
 
-    const model = ensure<ModelType>(dataAutoParameters.find(t => t.modelName === currentModel))
-    const configuration =ensure(model.configuration.find(c => c.nameConfiguration === currentConfiguration))
+    const model = ensure<ModelType>(dataAutoParameters.find((t:ModelType) => t.modelName === currentModel))
+    const configuration = ensure<ConfigurationType>(model.configuration.find((c:ConfigurationType) => c.nameConfiguration === currentConfiguration))
     
     const retailValue = configuration.retailValue
     const entranceCost = configuration.entranceCost
