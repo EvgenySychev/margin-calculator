@@ -18,7 +18,9 @@ export const ResultsPanel = () => {
             <div>
                 {calculate
                     ? <DisplayResultsPanel/>
-                    : <span>Введите данные для расчета</span>
+                    : <div style={{marginTop: "30%", marginLeft: "14%"}}> 
+                            <span>Введите данные для расчета</span>
+                        </div>
                 }
             </div>
         </div>

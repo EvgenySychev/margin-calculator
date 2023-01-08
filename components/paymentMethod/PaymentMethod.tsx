@@ -34,14 +34,14 @@ export const PaymentMethod = () => {
                 height: "30px",
                 width: "120px",
                 textAlign: "center",
-                background: `${paymentMethod === 'cash' ? "green" : " "}`
+                background: `${paymentMethod === 'cash' ? "darkslateblue" : " "}`
             }} onClick={() => chooseMethod('cash')}>Физ.лицо</span>
             <span style={{
                 border: "solid 2px",
                 height: "30px",
                 width: "120px",
                 textAlign: "center",
-                background: `${paymentMethod === 'leasing' ? "green" : " "}`
+                background: `${paymentMethod === 'leasing' ? "darkslateblue" : " "}`
             }} onClick={() => chooseMethod('leasing')}>Лизинг</span>
         </div>
     )
