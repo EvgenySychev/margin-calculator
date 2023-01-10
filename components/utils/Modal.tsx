@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./modal.module.css"
 
-export const Modal = ({activ, setActive}:any) => {
+export const Modal = ({active, setActive, children}:any) => {
     return (
-        <div className={activ ? style.modalActiv : style.modal} onClick={()=> setActive(false)}>
+        <div className={active ? style.modalActive : style.modal} onClick={()=> setActive(false)}>
             <div className={style.modalContent} onClick={e => e.stopPropagation()}>
-
+                {children}
             </div>
         </div>
     )

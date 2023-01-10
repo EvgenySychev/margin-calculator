@@ -10,6 +10,7 @@ import {
 import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 import {LeasingCompanySelectionPanel} from "./LeasingCompanySelectionPanel"
+import {Modal} from "../utils/Modal";
 
 type FormikErrorType = {
     model?: string
@@ -25,11 +26,12 @@ export const TransactionParametersSelectionPanel = () => {
 
     const [tiresGiftToggle, setTiresGiftToggle] = useState(false)
     const [tradeInToggle, setTradeInToggle] = useState(false)
+    const [modalActive,setModalActive] = useState(false)
 
     const dispatch = useAppDispatch()
     const modelWasSelected = useAppSelector(state => state.calculationToggle.modelWasSelected)
     const leasingCompanyWasSelected = useAppSelector(state => state.calculationToggle.leasingCompanyWasSelected)
-    const paymentMethod = useAppSelector(state=>state.calculationToggle.paymentMethod)
+    const paymentMethod = useAppSelector(state => state.calculationToggle.paymentMethod)
 
     const onTiresGiftSwitch = (e: ChangeEvent<HTMLInputElement>) => {
         setTiresGiftToggle(e.currentTarget.checked)
@@ -88,36 +90,40 @@ export const TransactionParametersSelectionPanel = () => {
         onSubmit: values => {
             dispatch(setParameters(values))
             dispatch(setCalculate(true))
-            
+
         },
     })
 
     return <div style={{margin: "10px", marginTop: "30px"}}>
         <form onSubmit={formik.handleSubmit}>
 
-            {paymentMethod==="cash"
-            ? <div style={{
-                height: "30px",
-                marginTop: "30px",
-                display: "flex",
-                justifyContent: "space-between"
-            }}>
+            {paymentMethod === "cash"
+                ? <div style={{
+                    height: "30px",
+                    marginTop: "30px",
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
                 <span style={{
-                    width: "120px"}}>Кредит</span>
-                <span>
-                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                    width: "120px"
+                }}>Кредит</span>
+                    <span>
+                    <input type="text" style={{textAlign: "right", height: "25px"}}
                            {...formik.getFieldProps("credit")}/>
                     <div>
                         {formik.errors.credit ?
                             <div
-                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.credit}</div> : null}
+                                style={{
+                                    color: 'red',
+                                    fontSize: '12px'
+                                }}>{formik.errors.credit}</div> : null}
                     </div>
                 </span>
-            </div>
-            : <LeasingCompanySelectionPanel/>
-        }
+                </div>
+                : <LeasingCompanySelectionPanel/>
+            }
 
-            
+
             <div style={{
                 height: "30px",
                 marginTop: "30px",
@@ -125,20 +131,25 @@ export const TransactionParametersSelectionPanel = () => {
                 justifyContent: "space-between"
             }}>
                 <span style={{
-                    width: "120px"}}>Шины</span>
+                    width: "120px"
+                }}>Шины</span>
                 <span style={{
-                    width: "150px"}}>
+                    width: "150px"
+                }}>
                     <input onChange={onTiresGiftSwitch} checked={tiresGiftToggle}
                            type="checkbox"/>
                     <span style={{fontSize: "15px"}}>шины в подарок</span>
                 </span>
                 <span>
-                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                    <input type="text" style={{textAlign: "right", height: "25px"}}
                            {...formik.getFieldProps("tires")}/>
                     <div>
                         {formik.errors.tires ?
                             <div
-                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.tires}</div> : null}
+                                style={{
+                                    color: 'red',
+                                    fontSize: '12px'
+                                }}>{formik.errors.tires}</div> : null}
                     </div>
                 </span>
             </div>
@@ -149,14 +160,26 @@ export const TransactionParametersSelectionPanel = () => {
                 justifyContent: "space-between"
             }}>
                 <span style={{
-                    width: "120px"}}>Допы</span>
+                    width: "120px"
+                }}>Допы</span>
+                <span style={{
+                    width: "150px"
+                }}>
+                    <span onClick={()=>setModalActive(!modalActive)} style={{fontSize: "15px", border: "1px solid black", }}>выбрать допы</span>
+                    <Modal active={modalActive} setActive={setModalActive}>
+                        Tra-ta-ta
+                    </Modal>
+                    </span>
                 <span>
-                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                    <input type="text" style={{textAlign: "right", height: "25px"}}
                            {...formik.getFieldProps("additionalEquipment")}/>
                     <div>
                         {formik.errors.additionalEquipment ?
                             <div
-                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.additionalEquipment}</div> : null}
+                                style={{
+                                    color: 'red',
+                                    fontSize: '12px'
+                                }}>{formik.errors.additionalEquipment}</div> : null}
                     </div>
                 </span>
 
@@ -168,20 +191,25 @@ export const TransactionParametersSelectionPanel = () => {
                 justifyContent: "space-between"
             }}>
                 <span style={{
-                    width: "120px"}}>Трейд-ин</span>
+                    width: "120px"
+                }}>Трейд-ин</span>
                 <span style={{
-                    width: "150px"}}>
+                    width: "150px"
+                }}>
                     <input onChange={onTradeInSwitch} checked={tradeInToggle}
                            type="checkbox"/>
                     <span style={{fontSize: "15px"}}>с трейд-ин</span>
                 </span>
                 <span>
-                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                    <input type="text" style={{textAlign: "right", height: "25px"}}
                            {...formik.getFieldProps("tradeIn")}/>
                     <div>
                         {formik.errors.tradeIn ?
                             <div
-                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.tradeIn}</div> : null}
+                                style={{
+                                    color: 'red',
+                                    fontSize: '12px'
+                                }}>{formik.errors.tradeIn}</div> : null}
                     </div>
                 </span>
 
@@ -193,14 +221,18 @@ export const TransactionParametersSelectionPanel = () => {
                 justifyContent: "space-between"
             }}>
                 <span style={{
-                    width: "120px"}}>Доп.скидка</span>
+                    width: "120px"
+                }}>Доп.скидка</span>
                 <span>
-                    <input type="text" style={{textAlign: "right",height: "25px"}}
+                    <input type="text" style={{textAlign: "right", height: "25px"}}
                            {...formik.getFieldProps("discount")}/>
                     <div>
                         {formik.errors.discount ?
                             <div
-                                style={{color: 'red', fontSize:'12px'}}>{formik.errors.discount}</div> : null}
+                                style={{
+                                    color: 'red',
+                                    fontSize: '12px'
+                                }}>{formik.errors.discount}</div> : null}
                     </div>
                 </span>
 
@@ -209,7 +241,8 @@ export const TransactionParametersSelectionPanel = () => {
                 height: "30px",
                 width: "200px",
                 marginTop: "20px",
-            }} disabled={!(modelWasSelected && leasingCompanyWasSelected)} type={'submit'}>Рассчитать
+            }} disabled={!(modelWasSelected && leasingCompanyWasSelected)}
+                    type={'submit'}>Рассчитать
             </button>
         </form>
 

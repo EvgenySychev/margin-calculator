@@ -7,7 +7,7 @@ import {
  import {Modal} from "../utils/Modal"
 
 export const SelectionPanel = () => {
-    const [modalActiv,setModalActiv] = useState(true)
+
     return <div style={{
         margin: "15px",
         border: "solid 2px grey"
@@ -15,6 +15,6 @@ export const SelectionPanel = () => {
         <CarSelectionPanel/>
         {/*<ReportedCarSelection/>*/}
         <TransactionParametersSelectionPanel/>
-        <Modal activ= {modalActiv} setActive={setModalActiv}/>
+
     </div>
 }

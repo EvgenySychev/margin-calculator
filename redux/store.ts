@@ -6,6 +6,7 @@ import calculationToggleSlice from "./slices/calculationToggleSlice";
 import coefficientsSlice from "./slices/coefficientsSlice";
 import dataLeasingCompanyParametersSlice from './slices/dataLaesingCompanyParametersSlice';
 import lasingCompanyParametersSlice from './slices/laesingCompanyParametrsSlice';
+import dataAdditionalEquipmentSlice from './slices/dataAdditionalEquipmentSlice';
 import {
     TypedUseSelectorHook,
     useDispatch as useDispatchBase,
@@ -25,7 +26,8 @@ export function makeStore() {
             coefficients:coefficientsSlice,
             dataLeasingCompanyParameters:dataLeasingCompanyParametersSlice,
             leasingCompanyParameters:lasingCompanyParametersSlice,
-            calculationResult:calculationResultSlice
+            calculationResult:calculationResultSlice,
+            dataAdditionalEquipment:dataAdditionalEquipmentSlice
         },
     });
 }
