@@ -20,17 +20,17 @@ const initialState: dataAdditionalEquipmentState = [
         entranceCost: '2000'
     },
     {
-        id: '2',
+        id: '3',
         productName: 'Ковер багажника',
         entranceCost: '3000'
     },
     {
-        id: '2',
+        id: '4',
         productName: 'Брызговики',
         entranceCost: '3500'
     },
     {
-        id: '2',
+        id: '5',
         productName: 'Защитная сетка радиатора',
         entranceCost: '1500'
     }
