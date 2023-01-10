@@ -11,6 +11,7 @@ import {useFormik} from "formik";
 import {ChangeEvent, useState} from "react";
 import {LeasingCompanySelectionPanel} from "./LeasingCompanySelectionPanel"
 import {Modal} from "../utils/Modal";
+import {AdditionalEquipmentList} from "../selectionPanel/AdditionalEquipmentList";
 
 type FormikErrorType = {
     model?: string
@@ -167,7 +168,7 @@ export const TransactionParametersSelectionPanel = () => {
                 }}>
                     <span onClick={()=>setModalActive(!modalActive)} style={{fontSize: "15px", border: "1px solid black", }}>выбрать допы</span>
                     <Modal active={modalActive} setActive={setModalActive}>
-                        Tra-ta-ta
+                        <AdditionalEquipmentList setActive={()=>setModalActive(false)} />
                     </Modal>
                     </span>
                 <span>

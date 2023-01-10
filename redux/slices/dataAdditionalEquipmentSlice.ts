@@ -10,14 +10,29 @@ export type dataAdditionalEquipmentState = dataAdditionalEquipmentItemState[]
 
 const initialState: dataAdditionalEquipmentState = [
     {
-        id: '',
-        productName: '',
-        entranceCost: ''
+        id: '1',
+        productName: 'Защита картера',
+        entranceCost: '2500'
     },
     {
-        id: '',
-        productName: '',
-        entranceCost: ''
+        id: '2',
+        productName: 'Ковры салона',
+        entranceCost: '2000'
+    },
+    {
+        id: '2',
+        productName: 'Ковер багажника',
+        entranceCost: '3000'
+    },
+    {
+        id: '2',
+        productName: 'Брызговики',
+        entranceCost: '3500'
+    },
+    {
+        id: '2',
+        productName: 'Защитная сетка радиатора',
+        entranceCost: '1500'
     }
 ]
 

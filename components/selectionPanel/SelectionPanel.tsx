@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
 import { CarSelectionPanel } from "./CarSelectionPanel";
 import {
     TransactionParametersSelectionPanel
  } from "./TransactionParametersSelectionPanel";
- import {Modal} from "../utils/Modal"
 
 export const SelectionPanel = () => {
 
