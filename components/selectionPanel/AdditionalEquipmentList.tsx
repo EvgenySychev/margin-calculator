@@ -1,8 +1,17 @@
-import {useAppSelector} from "../../redux/store";
+import {useAppDispatch, useAppSelector} from "../../redux/store";
+import setAdditionalEquipmentEntranceCoast from "../../redux/slices/financialParametersSlice"
 
 export const AdditionalEquipmentList = ({setActive}:any) => {
 
+    const dispatch = useAppDispatch()
+
     const dataAdditionalEquipment = useAppSelector(state => state.dataAdditionalEquipment)
+
+    const addAdditionalEquipment = () => {
+        setActive()
+        console.log('send');
+        
+    }
 
     return (
         <div>
@@ -10,7 +19,7 @@ export const AdditionalEquipmentList = ({setActive}:any) => {
                 <input type="checkbox"/>
                 <span>{item.productName}</span>
             </div>)}
-            <span style={{fontSize: "15px", border: "1px solid black", }} onClick={setActive}>Добавить в расчет</span>
+            <span style={{fontSize: "15px", border: "1px solid black", }} onClick={addAdditionalEquipment}>Добавить в расчет</span>
         </div>
     )
 }
